@@ -1,0 +1,10 @@
+<view>
+    <import src="../header/header.wxml" />
+    <template is="temp" data="{{text: '玩法规则'}}"/>
+</view>
+<view class="rule-wrapper">
+    <view class="rule-container" wx:for="{{ruleData}}" xw:for-index="key" wx:for-item="item">
+        <text class="rule-title">{{item.rule_headline}}</text><br/>
+        <text class="rule-desc">{{item.content}}</text>
+    </view>
+</view>

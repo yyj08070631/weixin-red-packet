@@ -1,0 +1,71 @@
+<view class="myRecord-wrapper" wx:if="{{myRecordIsShow == false}}">
+    <view class="pack-detail">
+            <import src="../header/header.wxml" />
+            <template is="temp" data="{{text: '我的记录'}}"/>
+        <view class="headbutton">
+            <view bindtap="hideRecordTab" class="out">我发出的</view>
+            <view bindtap="showRecordTab" class="in">我收到的</view>
+        </view>
+        <view class="myAvatar">
+            <image src="{{userInfoAvatar}}" />
+        </view>
+        <view class="num">
+            <text>{{nickName}}发出红包 6个共</text>
+        </view>
+        <view class="money">
+            <text>￥8.00</text>
+        </view>
+    </view>
+    <view class="record-content">
+        <navigator class="record-item" url="/pages/packetRecord/packetRecord">
+            <view class="itemLeft">
+                <view class="icon-value">2</view>
+            </view>
+            <view class="itemMiddle">
+                <text class="question">猜猜我用哪个词来形容自己</text>
+                <text class="time">8月1日 14 : 05</text>
+            </view>
+            <view class="itemRight">
+                    <text>10元</text>
+                    <text>3/5个</text>
+            </view>
+            <view class="arrowRight">
+                <image src="/images/arrow_right.png" />
+            </view>
+        </navigator>
+    </view>
+</view>
+<view class="myRecord-wrapper" wx:if="{{myRecordIsShow == true}}">
+    <view class="pack-detail">
+            <import src="../header/header.wxml" />
+            <template is="temp" data="{{text: '我的记录'}}"/>
+        <view class="headbutton">
+            <view bindtap="hideRecordTab" class="isOut">我发出的</view>
+            <view bindtap="showRecordTab" class="isIn">我收到的</view>
+        </view>
+        <view class="myAvatar">
+                <image src="{{userInfoAvatar}}" />
+        </view>
+        <view class="num">
+            <text>{{nickName}}收到红包 6个共</text>
+        </view>
+        <view class="money">
+            <text>￥8.00</text>
+        </view>
+    </view>
+    <view class="record-content">
+        <view class="record-item">
+            <view class="itemLeft">
+                <view class="icon-value">2</view>
+            </view>
+            <view class="itemMiddle">
+                <text class="question">猜猜我用哪个词来形容自己</text>
+                <text class="time">8月1日 14 : 05</text>
+            </view>
+            <view class="itemRight itemArrow">
+                    <text>10元</text>
+                    <text>3/5个</text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,43 @@
+<view class="record-wrapper">
+    <view>
+        <import src="../header/header.wxml" />
+        <template is="temp" data="{{text: '我的记录'}}"/>
+    </view>
+    <view class="myAvatar">
+        <image src="{{userInfoAvatar}}" />
+        <text>{{nickName}}</text>
+    </view>
+    <view class="question-container">
+        <view class="question-item"><image src="/images/qustion-icon.png" /><text>猜猜我用哪个词来形容自己......共10道题</text></view>
+    </view>
+    <view class="handle-container">
+        <view class="handle-item"><navigator url="/pages/index/index"><image src="/images/share-icon.png" />继续发问</navigator></view>
+        <view class="share-item"><button open-type="share" bindtap="onShareAppMessage"><image src="/images/transmit-icon.png" />发给朋友</button></view>
+    </view>
+    <view class="moneyComputed">
+        <view class="count">共5元，已领取3/5个</view>
+    </view>
+    <view class="winner-container">
+        <view class="winner-item">
+            <view class="winner-avatar"><image src="/images/user-avatar2.png" /></view>
+            <view class="winner-desc">
+                <text class="selectType">李晓明</text>
+                <text class="date">8月1日 14 : 05</text>
+            </view>
+            <view class="result-container">
+                <text  class="count">0元</text>
+            </view>
+        </view>
+        <view class="winner-item">
+            <view class="winner-avatar"><image src="/images/user-avatar2.png" /></view>
+            <view class="winner-desc">
+                <text class="selectType">李晓明</text>
+                <text class="date">8月1日 14 : 05</text>
+            </view>
+            <view class="result-container">
+                <text  class="count">0元</text>
+            </view>
+        </view>
+    </view>
+
+</view>

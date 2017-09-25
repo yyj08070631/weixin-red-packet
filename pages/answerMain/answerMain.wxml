@@ -1,0 +1,32 @@
+<!-- 改题页面 -->
+<view class="question-wrapper">
+	<view class="question-header">
+		<image src="../../images/arrow-left.png" bindtap="gobackHistory"></image>
+		<text wx:if="{{quesKey < 10}}">{{'开始答题('+(quesKey+1)+'/10)' }}</text>
+		<view bindtap="saveQuestion" wx:if="{{ showBtn >= 9 }}">完成</view>
+	</view>
+	<view class="title-wrapper">
+		<view class="icon"><image src="/images/qustion-icon.png" /></view>
+		<text class="content">{{storageProblem[quesKey].topic_content}}</text>
+    </view>
+	<view wx:for="{{storageProblem[quesKey].answerList}}" wx:for-index="key" wx:for-item="item">
+		<view class="option-item" bindtap="changeStroageURL" data-type="{{item.aid}}" data-index="{{key}}">
+			<image src="{{updateAnswerList[key]}}"/>
+			<text class="imgtext">{{item.content}}</text>
+		</view>
+	</view>	
+	<view class="change-question">
+		<view class="tab-left">
+            <image src="/images/prew.png" bindtap="goBackQuestion"  wx:if="{{ quesKey > 0 }}"></image>
+            <text class="imgtext" bindtap="goBackQuestion"  wx:if="{{ quesKey > 0 }}">上一题</text>
+		</view>
+		<view class="tab-left" wx:if="{{ quesKey < 9 }}">
+			<image src="/images/next.png" bindtap="goNextQuestion"></image>
+			<text class="imgtext" bindtap="goNextQuestion">下一题</text>
+		</view>
+		<view class="tab-left" wx:else>
+			<image src="/images/next.png" bindtap="saveQuestion"></image>
+			<text class="imgtext" bindtap="saveQuestion">完成</text>
+		</view>
+	</view>	
+</view>

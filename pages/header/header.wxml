@@ -1,0 +1,6 @@
+<template name="temp">
+        <view class="header">
+                <view bindtap="gobackHistory"><image src="/images/arrow-left.png" /></view>
+                <text class="title">{{text}}</text>
+        </view>
+</template>

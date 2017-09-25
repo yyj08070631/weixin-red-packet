@@ -1,0 +1,161 @@
+@import "../header/header.wxss";
+page{
+    height: 100%;
+    width: 100%;
+    background: #e0e0e0
+}
+.record-wrapper{
+    background: #fff
+}
+.myAvatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.myAvatar image{
+    height: 150rpx;
+    width: 150rpx;
+    margin-top: 76rpx;
+    margin-bottom:26rpx; 
+    border-radius: 50%
+}
+.myAvatar text{
+    font-family: 微软雅黑 ;
+    font-size: 30rpx;
+    margin-bottom:54rpx; 
+}
+.question-container{
+    font-family: 微软雅黑 ;
+    font-size: 26rpx;
+    margin-left: 32rpx;
+}
+.question-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 38rpx;
+}
+.answer-item{
+    display: flex;
+    align-items: center;
+    margin-bottom:34rpx; 
+}
+.question-item image{
+    height: 33rpx;
+    width: 33rpx;
+    margin-right: 16rpx;
+}
+.answer-item image{
+    height: 34rpx;
+    width: 34rpx;
+    margin-right: 16rpx;
+}
+.handle-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 94rpx;
+    border-top: 2rpx solid #e0e0e0;
+}
+.handle-item{
+    margin-right: 56rpx;
+}
+.share-item{
+    margin-left: 56rpx;
+}
+button {
+    font-size:28rpx;    
+    color:#5863a7;
+    background-color:#fff;
+}
+button::after {
+    border:1px solid #fff
+    
+}    
+.handle-item image{
+    width: 39rpx;
+    height: 31rpx;
+    margin-right: 12rpx;
+}
+.handle-item navigator{
+    font-family: 微软雅黑 ;
+    font-size: 28rpx;
+    color: #5863a7;
+    
+}
+.share-item image{
+    width: 31rpx;
+    height: 31rpx;
+    margin-right: 12rpx;
+    vertical-align: middle
+}
+.share-item navigator{
+    font-family: 微软雅黑 ;
+    font-size: 28rpx;
+    color: #5863a7;
+}
+.moneyComputed{
+    display: flex;
+    align-items: center;
+    height: 54rpx;
+    width: 100%;
+    background: #f0f0f0;
+}
+.handle-item,.count{
+    font-family: 微软雅黑 ;
+    font-size: 24rpx;
+    color:#909090 ;
+    margin-left: 38rpx;
+}
+
+
+
+
+
+
+.winner-container .winner-item{
+    height:110rpx;
+    width: 100%;
+    margin:0;
+    padding:0;
+    display:flex;
+    align-items:center;/*垂直居中*/
+    justify-content: center;/*水平居中*/
+    margin-top: 28rpx;
+    border-bottom: 2rpx solid #e0e0e0; 
+}
+.winner-item image{
+    width:64rpx;
+    height: 64rpx; 
+    margin-left: 32rpx;
+}
+.winner-item .winner-avatar{
+    width: 12%;
+}
+.winner-item .winner-desc{
+    width: 34%;
+    margin-left: 18rpx;
+}
+.winner-item .result-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 54%;
+    margin-right: 32rpx;
+}
+.winner-desc .selectType{
+    font-family: 微软雅黑 ;
+    font-size: 26rpx;
+    color: #382e2e;
+}
+.winner-desc .date{
+    display: block;
+    font-family: 微软雅黑 ;
+    font-size: 26rpx;
+    color: #909090;
+}
+.result-container .count{
+    font-family: 微软雅黑 ;
+    font-size: 26rpx;
+    color: #382e2e;
+}

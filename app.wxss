@@ -1,0 +1,5 @@
+/**app.wxss**/
+@import 'weui.wxss';
+page{
+    font-family: "微软雅黑  "
+}

@@ -1,0 +1,19 @@
+.header{
+    height: 84rpx;
+    line-height: 84rpx;
+    width:100%;
+    background: #f92440;
+    text-align: center;
+}
+.header image{
+    height: 38rpx;
+    width: 22rpx;
+    float: left;
+    margin-left: 30rpx;
+    margin-top: 26rpx;
+}
+.header .title{
+    font-size: 32rpx;
+    color: #fff;
+    margin-right:30rpx; 
+}

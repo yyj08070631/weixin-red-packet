@@ -1,0 +1,60 @@
+<view class="startAnswer-wrapper">
+    <view class="startAnswer-container">
+        <image class="avatar" src="{{userInfoAvatar}}"></image>
+        <text class="name">{{nickName}}</text>
+        <text class="question">你了解他吗？快来测试一下吧！</text>
+        <text class="desc">（答对了有红包拿哦）</text>
+        <navigator class="send-btn" url="/pages/answerMain/answerMain">开始答题</navigator>
+    </view>
+    <view class="handle-tab">
+        <button class="item-left" open-type="share">
+            <image src="../../images/transmit-icon.png"></image>
+            <text>转发</text>
+        </button>
+        <navigator class="item-right" url="/pages/index/index">
+            <image src="../../images/laugh-icon.png"></image>
+            <text>我也发一个</text>
+        </navigator>
+    </view>
+    <view class="detail-container">
+        <view class="detail-item">
+            <image src="../../images/avatar.png"></image>
+            <view class="user-desc">
+                <text>刘三姐</text>
+                <text>默契度90%</text>
+            </view>
+            <view class="divide"></view>
+            <view class="packet-desc">
+                <text>领到2.01元</text>
+                <text>答对9题     15:31</text>
+            </view>
+        </view>
+        
+
+        <view class="detail-item">
+            <image src="../../images/avatar.png"></image>
+            <view class="user-desc">
+                <text>刘三姐</text>
+                <text>默契度90%</text>
+            </view>
+            <view class="divide"></view>
+            <view class="packet-desc">
+                <text>领到2.01元</text>
+                <text>答对9题     15:31</text>
+            </view>
+        </view>
+
+        <view class="detail-item">
+            <image src="../../images/avatar.png"></image>
+            <view class="user-desc">
+                <text>刘三姐</text>
+                <text>默契度90%</text>
+            </view>
+            <view class="divide"></view>
+            <view class="packet-desc">
+                <text>领到2.01元</text>
+                <text>答对9题     15:31</text>
+            </view>
+        </view>
+    </view>
+</view>

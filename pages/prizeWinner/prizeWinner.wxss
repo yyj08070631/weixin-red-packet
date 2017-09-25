@@ -1,0 +1,189 @@
+@import "../header/header.wxss";
+/* 获奖者外层 */
+page{
+    width: 100%;
+    height: 100%;
+}
+.prize-winner-wrapper{
+    width: 750rpx;
+    height: 100%;
+    background: #f0f0f0;
+}
+/* 头部 */
+/* .prize-winner-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 84rpx;
+    background: #f92440
+}
+.prize-winner-header image{
+    margin-left: 30rpx;
+    width: 22rpx;
+    height: 38rpx;
+}
+.prize-winner-header text{
+    display: block;
+    flex: 1;
+    text-align: center;
+    font-size: 30rpx;
+    color: #fff
+} */
+/* 前三名组件 */
+.prize-winner-container{
+    position: relative;
+    width: 100%;
+    height: 590rpx;
+    background: url('../../images/result-bg.png');
+    background-size: 750rpx 590rpx
+}
+.prize-winner-container .item-first {
+    margin: 0 auto;
+    width: 334rpx;
+}
+/* 用来定位的外层 */
+.prize-winner-container .pos-wrapper{
+    position: relative;
+}
+/* 第一名 */
+.prize-winner-container .item-first image:first-child{
+    margin-top: 36rpx;
+    width: 100%;
+    height: 170rpx;
+}
+.prize-winner-container .item-first .prize-winner-avatar{
+    top: 36rpx;
+}
+.prize-winner-container .item-first .winner-award{
+   top: 150rpx;
+} 
+/* 第二名 */
+.prize-winner-container .item-second {
+    position: absolute;
+    left: 70rpx;
+    top: 290rpx;
+    width: 200rpx;
+}
+.prize-winner-container .item-second .prize-winner-avatar{
+    top: -10rpx;
+    margin-left: -55rpx;
+    width: 112rpx;
+    height: 112rpx;
+}
+.prize-winner-container .item-second image:first-child {
+    width: 100%;
+    height: 128rpx;
+}
+.prize-winner-container .item-second .winner-award{
+    top: 80rpx;
+ } 
+/* 第三名 */
+.prize-winner-container .item-third {
+    position: absolute;
+    right: 70rpx;
+    top: 338rpx;
+    width: 200rpx;
+}
+.prize-winner-container .item-third .prize-winner-avatar{
+    top: -10rpx;
+    margin-left: -55rpx;
+    width: 112rpx;
+    height: 112rpx;
+}
+.prize-winner-container .item-third image:first-child {
+    width: 100%;
+    height: 128rpx;
+}
+.prize-winner-container .item-third .winner-award{
+    top: 80rpx;
+}
+/* 头像统一样式*/
+.prize-winner-container .prize-winner-avatar{
+    position: absolute;
+    left: 50%;
+    width: 136rpx;
+    height: 136rpx;
+    margin-left: -70rpx;
+    border: 2rpx solid #ff7390;
+    border-radius: 50%;
+}
+
+/* 共同样是 */
+.prize-winner-container .winner-award{
+    position: absolute;
+    left: 50%;
+    margin-left: -70rpx;
+    width: 140rpx;
+    height: 52rpx;
+    
+}
+.prize-winner-container .winner-award:nth-child(2),.prize-winner-container .winner-award:nth-child(3){
+    width: 120rpx;
+    margin-left: -58rpx;
+}
+.prize-winner-container .prize-winner-username{
+    display: block;
+    margin-top: 10rpx;
+    font-size: 28rpx;
+    text-align: center;
+    color: #f92241;
+}
+.prize-winner-container .prize-winner-desc{
+    display: block;
+    margin-top: 14rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #e18932
+}
+/* 其他获奖者 */
+.other-winner-container{
+    margin-top: 20rpx;
+    width: 100%;
+    background-color: #fff;
+}
+.other-winner-container .other-winner-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 132rpx;
+    border-bottom: 1rpx solid #e0e0e0
+}
+.other-winner-container .other-winner-item .other-winner-avatar{
+    margin-left: 46rpx;
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+}
+.other-winner-container .other-winner-info{
+    margin-left: 20rpx;
+}
+.other-winner-container .other-winner-info text{
+    display: block
+}
+.other-winner-container .other-winner-info text:first-child{
+    font-size: 28rpx;
+}
+.other-winner-container .other-winner-info text:last-child{
+    margin-top: 16rpx;
+    font-size: 26rpx;
+    color: #909090
+}
+.other-winner-container view{
+    flex: 1
+}
+.other-winner-container .other-winner-desc{
+    margin-right: 50rpx;
+    text-align: right;
+}
+.other-winner-container .other-winner-desc text{
+    display: block
+}
+.other-winner-container .other-winner-desc text:first-child{
+    font-size: 28rpx;
+}
+.other-winner-container .other-winner-desc text:last-child{
+    margin-top: 16rpx;
+    font-size: 26rpx;
+    color: #909090
+}
