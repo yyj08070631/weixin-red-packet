@@ -26,6 +26,7 @@ Page({
             success: function(res) {
                 userInfoList = res.data
                 console.log(userInfoList)
+                console.log(1)
             }
 
         })
