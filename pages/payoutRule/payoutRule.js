@@ -16,14 +16,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: getApp().globalData.ajaxUrl+':8081/RedPage/game/select', 
+      url: getApp().globalData.ajaxUrl+'/RedPage/game/select', 
       method: 'GET',
       header: {
         'content-type': 'application/json' 
       },
       success: function(res) {
-
-    
             that.setData({
               ruleData: res.data
             })        

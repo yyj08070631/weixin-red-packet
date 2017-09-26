@@ -1,22 +1,22 @@
 var app = getApp()
 Page({
   data: {
-	userInfoList: [],	//用来保存本地保存的用户信息
-    handleKey: false,	//控制显示选题面板还是改题面板
-    storageProblem: [], // 获取本地问题信息，就是选题之后的结果
-    answer: '',			//用来存储答案的值
-    showBtn: 0,			//显示确定或下一题按钮
-    quesKey: 0,			//更换问题的值
-    service: 0,			//服务费
-    resultNumber: 0,	//最终金额结果
-    questionData: [],	//用来保存从后天获取的数据
-					//item的背景数组，默认全部未选中
-    urlList: [], //用来清除选中的值
-    answerList: [],		//存储5个题目和答案的数组
-  updateAnswerList: [], //修改题目存储的url
-  index: ''
+  	userInfoList: [],	    //用来保存本地保存的用户信息
+    handleKey: false,	    //控制显示选题面板还是改题面板
+    storageProblem: [],   // 获取本地问题信息，就是选题之后的结果
+    answer: '',			      //用来存储答案的值
+    showBtn: 0,			      //显示确定或下一题按钮
+    quesKey: 0,			      //更换问题的值
+    service: 0,			      //服务费
+    resultNumber: 0,	    //最终金额结果
+    questionData: [],   	//用来保存从后天获取的数据
+				                	//item的背景数组，默认全部未选中
+    urlList: [],          //用来清除选中的值
+    answerList: [],	    	//存储5个题目和答案的数组
+    updateAnswerList: [], //修改题目存储的url
+    index: ''
   },
-    //页面加载完钩子函数
+  //页面加载完钩子函数
   onLoad (options) {
 	
 	let that = this
@@ -245,9 +245,6 @@ Page({
           this.setData({
             updateAnswerList: url
           })
-		 
-		
-		
 		}else{
           this.setData({
             quesKey: 0

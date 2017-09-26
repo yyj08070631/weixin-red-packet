@@ -284,7 +284,5 @@ Page({
   createPacket: function(){
     
     this.payPacket()
-      
-    // console.log(1)
   },
 })
