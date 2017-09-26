@@ -1,18 +1,18 @@
 <view class="createPacket-wrapper">
-    <view class="createPacket-header">
-        <image src="../../images/arrow-left.png" bindtap="gobackHistory"></image>
-        <text>生成红包</text>
-    </view>
-    <view class="createPacket-container">
-        <image class="avatar" src="{{userInfoAvatar}}"></image>
-        <text class="name">{{nickName}}</text>
-        <text class="packet-money">￥8.00</text>
-        <text class="desc">您的红包已生成，赶紧发给朋友吧</text>
-        <text class="tip">（24小时内未领完的红包余额将默认返还）</text>
-        <button class="send-btn" open-type="share">发给朋友</button>
-        <view class="check-answer">
-            <image src="{{ isCheck === true ? '../../images/yes.png' : '../../images/no.png'}}" bindtap="checkBtn"></image>
-            <text>朋友答题后可查看答案</text>
-        </view>  
-    </view>
+	<view class="createPacket-header">
+		<image src="../../images/arrow-left.png" bindtap="gobackHistory"></image>
+		<text>生成红包</text>
+	</view>
+	<view class="createPacket-container">
+		<image class="avatar" src="{{userInfoAvatar}}"></image>
+		<text class="name">{{nickName}}</text>
+		<text class="packet-money">￥8.00</text>
+		<text class="desc">您的红包已生成，赶紧发给朋友吧</text>
+		<text class="tip">（24小时内未领完的红包余额将默认返还）</text>
+		<button class="send-btn" open-type="share">发给朋友</button>
+		<view class="check-answer">
+			<image src="{{ isCheck === true ? '../../images/yes.png' : '../../images/no.png'}}" bindtap="checkBtn"></image>
+			<text>朋友答题后可查看答案</text>
+		</view>
+	</view>
 </view>
