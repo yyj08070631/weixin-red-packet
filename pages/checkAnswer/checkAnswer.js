@@ -5,15 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    answerList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var self = this
     wx.request({
-      url: 'http://admin.qingmeng168.com/RedPage/topic/LookAnswer', 
+      url: 'http://miniapp.qingmeng168.com/RedPage/topic/LookAnswer', 
       method: 'POST',
       header: {
         'content-type': 'application/json' 
@@ -24,9 +25,12 @@ Page({
     },
     success(res) {
         console.log(res.data)
+        self.setData({
+          answerList: res.data
+        })
 	  },
 	  fail(){
-			// console.log(userInfoList.sex)
+
 	  }
   	})     
   },

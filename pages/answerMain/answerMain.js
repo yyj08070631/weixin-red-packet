@@ -18,8 +18,8 @@ Page({
   },
     //页面加载完钩子函数
   onLoad (options) { 
-	let that = this
-  	let {storageProblem, quesKey, userInfoList, urlList} = that.data
+	let self = this
+  	let {storageProblem, quesKey, userInfoList, urlList} = self.data
 	//获取用户信息
 	wx.getStorage({
 		key: 'userInfo',
@@ -42,7 +42,7 @@ Page({
 		  tid: (1).toString()
 	  },
 		success(res) {
-				that.setData({
+				self.setData({
 					storageProblem: res.data,
 				})    
 			// console.log(res.data)
@@ -50,7 +50,7 @@ Page({
 			for(let i=0; i<res.data[quesKey].answerList.length;i++ ){
 				url.push('/images/uncheck.png')
 			}
-			that.setData({
+			self.setData({
 				updateAnswerList: url
 			})
 		},
@@ -231,7 +231,9 @@ Page({
 			data: {	
 				response_answer: response_answer.toString(),
 				sid: sid.toString(),
-				id: (1).toString()
+				id: (7).toString(),
+				tid: (1).toString()
+
 			},
 			success(res) {
 				console.log(res)

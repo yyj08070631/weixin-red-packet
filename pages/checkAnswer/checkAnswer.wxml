@@ -3,35 +3,22 @@
         <image src="../../images/arrow-left.png" bindtap="gobackHistory"></image>
         <text>查看答案</text>
     </view>
-    <view class="checkAnswer-container">
-        <view class="checkAnswer-tiem">
-            <view class="question">
-                <view class="index">1</view>
-                <text class="content">猜猜我用哪个形容词形容自己？</text>
-            </view>
-            <view class="answer">
-                <view class="true">
-                    <image src="../../images/result-yes.png"></image>
-                    <text>小可爱</text>
-                </view>
-                <view class="false">
-                    <image src="../../images/result-no.png"></image>
-                    <text>女汉子</text>
-                </view>
-                <image class="tip-icon" src="../../images/tip.png"></image>  
-            </view>
-        </view>
-        <view class="checkAnswer-tiem">
+    <view class="checkAnswer-container"  >
+            <view class="checkAnswer-tiem" wx:for="{{answerList}}" wx:for-index="key">
                 <view class="question">
-                    <view class="index">2</view>
-                    <text class="content">猜猜我用哪个形容词形容自己？</text>
+                    <view class="index">{{key+1}}</view>
+                    <text class="content">{{item.topic}}</text>
                 </view>
                 <view class="answer">
                     <view class="true">
                         <image src="../../images/result-yes.png"></image>
-                        <text>小可爱</text>
+                        <text>{{item.answer}}</text>
                     </view>
-                    <image class="tip-icon" src="../../images/tip.png"></image>  
+                    <view class="false"  wx:if="{{item.errorId != item.answerId}}">
+                        <image src="../../images/result-no.png"></image>
+                        <text>女汉子</text>
+                    </view>
+                    <image class="tip-icon" src="../../images/tip.png" wx:if="{{item.errorId == item.answerId}}"></image>  
                 </view>
             </view>
     </view>

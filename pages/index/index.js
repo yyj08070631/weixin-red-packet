@@ -151,7 +151,7 @@ Page({
     this.setData({
       packetNum: e.detail.value.replace(/[^0-9]/g,''),
       service:(this.data.moneyNum * e.detail.value / 103).toFixed(2),
-      resultNumber: ((this.data.moneyNum * e.detail.value ) + this.data.moneyNum*e.detail.value / 103).toFixed(2),
+      resultNumber: ((this.data.moneyNum * e.detail.value ) + this.data.moneyNum * e.detail.value / 103).toFixed(2),
     })
     // this.data.moneyNum = '';
     // console.log(this.data.packetNum)

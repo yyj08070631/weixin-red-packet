@@ -4,7 +4,7 @@ page{
 }
 .checkAnswer-wrapper{
     width: 100%;
-    height: 100%;
+    height: auto;
     background: #e0e0e0
 }
 .checkAnswer-header{
@@ -26,10 +26,10 @@ page{
    color: #fff;
 }
 .checkAnswer-container{
-    position: relative;
     width: 100%;
 }
 .checkAnswer-container .checkAnswer-tiem{
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 20rpx;
