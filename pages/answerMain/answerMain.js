@@ -231,7 +231,7 @@ Page({
 			data: {	
 				response_answer: response_answer.toString(),
 				sid: sid.toString(),
-				id: (7).toString(),
+				id: (10).toString(),
 				tid: (1).toString()
 
 			},
@@ -239,7 +239,7 @@ Page({
 				console.log(res)
 				if(res.data == 1){
 					wx.navigateTo({
-						url: '/pages/checkAnswer/checkAnswer'
+						url: '/pages/payAward/payAward'
 					})
 				}
 			},

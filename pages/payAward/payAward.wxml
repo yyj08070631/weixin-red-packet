@@ -1,13 +1,13 @@
 <view class="createPacket-wrapper">
     <view class="createPacket-header">
         <image src="../../images/arrow-left.png" bindtap="gobackHistory"></image>
-        <text>生成红包</text>
+        <text>答题结果</text>
     </view>
     <view class="createPacket-container">
-        <image class="avatar" src="../../images/avatar.png"></image>
-        <text class="name">尼古拉斯</text>
-        <text class="packet-money">￥8.00</text>
-        <text class="desc">答对8题，默契度80%</text>
-        <navigator class="send-btn" url="/pages/checkAnswer/checkAnswer">查看答案</navigator>
+        <image class="avatar" src="{{userInfoAvatar}}"></image>
+        <text class="name">{{nickName}}</text>
+        <text class="packet-money">￥{{packetDataList.money}}</text>
+        <text class="desc">答对{{packetDataList.privity.correct}}题，默契度{{packetDataList.privity.percentum}}</text>
+        <navigator class="send-btn" url="/pages/checkAnswer/checkAnswer" hidden ="{{packetDataList.view === 'false'}}">查看答案</navigator>
     </view>
 </view>

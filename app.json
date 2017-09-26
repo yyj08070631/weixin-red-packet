@@ -1,8 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/payAward/payAward", 
     "pages/answerMain/answerMain",
     "pages/checkAnswer/checkAnswer",
-    "pages/index/index",
+    
     
    
     
@@ -10,8 +12,7 @@
     
     
     
-    
-    "pages/payAward/payAward", 
+  
    
     
     

@@ -2,7 +2,8 @@
 App({    
   globalData:{  
     userInfo:[],  
-    ajaxUrl: 'http://miniapp.qingmeng168.com' 
+    ajaxUrl: 'http://miniapp.qingmeng168.com',
+
 },    
   onLaunch: function() {
     //调用API从本地缓存中获取数据
@@ -12,14 +13,16 @@ App({
   },
 
   getUserInfo: function(cb) {
+    console.log("sdasda")
     var that = this
-    if (this.globalData.userInfo) {
+    if (that.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
     } else {
       //调用登录接口
       wx.getUserInfo({
         withCredentials: false,
         success: function(res) {
+          console.log('000000')
           that.globalData.userInfo = res.userInfo
           
           typeof cb == "function" && cb(that.globalData.userInfo)
