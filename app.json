@@ -1,23 +1,22 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/answerMain/answerMain",
-    "pages/selectQuestion/selectQuestion", 
-    "pages/createPacket/createPacket",
-    "pages/startAnswer/startAnswer",
-    "pages/payAward/payAward", 
-    "pages/packetRecord/packetRecord",
-    "pages/myRecord/myRecord",
-    "pages/checkAnswer/checkAnswer",
-    "pages/payoutRule/payoutRule",
-    "pages/payAward/payAward",
-    "pages/prizeWinner/prizeWinner"
-  ],
-  "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "white",
-    "navigationBarTitleText": "红包来啦",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
-  }
+    "pages": [
+        "pages/index/index",
+        "pages/answerMain/answerMain",
+        "pages/selectQuestion/selectQuestion",
+        "pages/createPacket/createPacket",
+        "pages/startAnswer/startAnswer",
+        "pages/payAward/payAward",
+        "pages/packetRecord/packetRecord",
+        "pages/myRecord/myRecord",
+        "pages/checkAnswer/checkAnswer",
+        "pages/payoutRule/payoutRule",
+        "pages/prizeWinner/prizeWinner"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "white",
+        "navigationBarTitleText": "红包来啦",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    }
 }
