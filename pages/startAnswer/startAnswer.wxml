@@ -29,32 +29,5 @@
                 <text>答对9题     15:31</text>
             </view>
         </view>
-        
-
-        <view class="detail-item">
-            <image src="../../images/avatar.png"></image>
-            <view class="user-desc">
-                <text>刘三姐</text>
-                <text>默契度90%</text>
-            </view>
-            <view class="divide"></view>
-            <view class="packet-desc">
-                <text>领到2.01元</text>
-                <text>答对9题     15:31</text>
-            </view>
-        </view>
-
-        <view class="detail-item">
-            <image src="../../images/avatar.png"></image>
-            <view class="user-desc">
-                <text>刘三姐</text>
-                <text>默契度90%</text>
-            </view>
-            <view class="divide"></view>
-            <view class="packet-desc">
-                <text>领到2.01元</text>
-                <text>答对9题     15:31</text>
-            </view>
-        </view>
     </view>
 </view>
