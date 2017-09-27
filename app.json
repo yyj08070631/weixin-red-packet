@@ -1,24 +1,19 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/payAward/payAward", 
+    "pages/startAnswer/startAnswer",
     "pages/answerMain/answerMain",
+    
+    "pages/payAward/payAward", 
+    
     "pages/checkAnswer/checkAnswer",
     
     
-   
-    
-    
-    
-    
-    
   
-   
-    
     
     "pages/selectQuestion/selectQuestion", 
     "pages/createPacket/createPacket",
-    "pages/startAnswer/startAnswer",
+   
     "pages/packetRecord/packetRecord",
     "pages/myRecord/myRecord",
     

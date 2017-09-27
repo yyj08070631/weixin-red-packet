@@ -241,6 +241,13 @@ Page({
       content: "总共￥"+this.data.resultNumber+"  / 含手续费￥"+this.data.service,
       success: function(res) {
         if(res.confirm){
+          wx.clearStorage({
+            key: 'question',
+          })
+          wx.clearStorage({
+            key: 'userInfo',
+
+          })
           wx.navigateTo({
             url: "/pages/createPacket/createPacket",
           });

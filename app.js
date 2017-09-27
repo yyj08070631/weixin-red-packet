@@ -2,7 +2,7 @@
 App({    
   globalData:{  
     userInfo:[],  
-    ajaxUrl: 'http://miniapp.qingmeng168.com',
+    ajaxUrl: 'https://miniapp.qingmeng168.com',
 
 },    
   onLaunch: function() {
