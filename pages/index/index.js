@@ -24,7 +24,8 @@ Page({
 		resultNumber: 0, // 最终金额结果
 		// item的背景数组，默认全部未选中
 		urlList: [],
-		answerList: [] // 存储5个题目和答案的数组
+		answerList: [], // 存储5个题目和答案的数组
+		service: 1 // 服务费比例
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -57,7 +58,6 @@ Page({
 				}
 			}
 		})
-
 		wx.getUserInfo({
 			success: function (res) {
 				console.log(res)
@@ -108,8 +108,24 @@ Page({
 				console.log("获取用户信息完成！")
 			}
 		})
+		// 加载页面数据
+		// wx.request({
+		// 	url: app.globalData.ajaxUrl + '/RedPage/game/index',
+		// 	method: 'POST',
+		// 	header: {
+		// 		'content-type': 'application/json'
+		// 	},
+		// 	success(res) {
+		// 		self.setData({
+		// 			service: ( res.service / 100 ) * 10,
+		// 		})
+		// 	},
+		// 	fail() {
+		// 		console.log(userInfoList.sex)
+		// 	}
+		// })
 	},
-	//选中图标变换
+	// 选中图标变换
 	// 红包限制
 	maxNum: function (num) {
 		// console.log(num)
@@ -129,22 +145,33 @@ Page({
 	},
 	//输入金额数值
 	replaceMoneyVal: function (e) {
-		this.setData({
-			moneyNum: e.detail.value
-				.replace(/[^\d.]/g, "")
-				.replace(/\.{2,}/g, ".")
-				.replace(".", "$#$")
-				.replace(/\./g, "")
-				.replace("$#$", ".").replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'),
-			service: (e.detail.value * this.data.packetNum / 103).toFixed(2),
-			resultNumber: ((e.detail.value * this.data.packetNum) + e.detail.value * this.data.packetNum / 103).toFixed(2)
-			// resultNumber: this.data.packetNum * e.detail.value
+		// 加载页面数据
+		wx.request({
+			url: app.globalData.ajaxUrl + '/RedPage/game/index',
+			method: 'POST',
+			header: {
+				'content-type': 'application/json'
+			},
+			success(res) {
+				let resultNumber = ((e.detail.value * this.data.packetNum) + e.detail.value * this.data.packetNum / 103).toFixed(2);
+				this.setData({
+					moneyNum: e.detail.value
+						.replace(/[^\d.]/g, "")
+						.replace(/\.{2,}/g, ".")
+						.replace(".", "$#$")
+						.replace(/\./g, "")
+						.replace("$#$", ".").replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'),
+					service: (e.detail.value * this.data.packetNum / 103).toFixed(2),
+					resultNumber: resultNumber,
+					// service: ( res.service / 100 ) * resultNumber, 有接口才开放
+					service: ( 10 / 100 ) * resultNumber
+				});
+				this.maxNum(e.detail.value);
+			},
+			fail() {
+				console.log('Request Failed')
+			}
 		})
-		// console.log(this.data.packetNum)
-		// console.log(e.detail.value)
-		// console.log(this.data.resultNumber)   
-		this.maxNum(e.detail.value)
-		console.log(this.data.moneyNum)
 	},
 	//输入红包数值
 	replacePacketVal: function (e) {
@@ -156,7 +183,7 @@ Page({
 		// this.data.moneyNum = '';
 		// console.log(this.data.packetNum)
 		// console.log(e.detail.value)
-		// console.log(this.data.resultNumber)   
+		// console.log(this.data.resultNumber)
 		this.maxNum(e.detail.value)
 	},
 	//获取最终结果
@@ -266,7 +293,7 @@ Page({
 			url: "/pages/selectQuestion/selectQuestion",
 		})
 	},
-	//创建红包
+	// 创建红包
 	// 存储金额
 	setPacketInfo: function () {
 		wx.setStorage({
