@@ -29,7 +29,7 @@ page{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: url(../../images/openPacket.png)no-repeat;
+	background: url('http://miniapp.qingmeng168.com/img/openPacket.png')no-repeat;
 	background-size: 100% 200rpx;
 }
 .createPacket-container .avatar{
