@@ -1,34 +1,4 @@
 {
-<<<<<<< HEAD
-  "pages": [
-    "pages/index/index",
-    "pages/startAnswer/startAnswer",
-    "pages/answerMain/answerMain",
-    
-    "pages/payAward/payAward", 
-    
-    "pages/checkAnswer/checkAnswer",
-    
-    
-  
-    
-    "pages/selectQuestion/selectQuestion", 
-    "pages/createPacket/createPacket",
-   
-    "pages/packetRecord/packetRecord",
-    "pages/myRecord/myRecord",
-    
-    "pages/payoutRule/payoutRule",
-    "pages/prizeWinner/prizeWinner"
-  ],
-  "window": {
-    "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "white",
-    "navigationBarTitleText": "我包你答",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
-  }
-=======
     "pages": [
         "pages/index/index",
         "pages/answerMain/answerMain",
@@ -49,5 +19,4 @@
         "navigationBarTextStyle": "black",
         "enablePullDownRefresh": true
     }
->>>>>>> 05f89a483e6f2942beb59c42649a9e7d76d15472
 }

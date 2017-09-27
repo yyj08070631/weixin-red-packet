@@ -2,12 +2,7 @@
 App({    
   globalData:{  
     userInfo:[],  
-<<<<<<< HEAD
-    ajaxUrl: 'https://miniapp.qingmeng168.com',
-
-=======
     ajaxUrl: 'http://miniapp.qingmeng168.com' 
->>>>>>> 05f89a483e6f2942beb59c42649a9e7d76d15472
 },    
   onLaunch: function() {
     //调用API从本地缓存中获取数据
