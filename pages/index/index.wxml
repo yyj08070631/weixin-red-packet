@@ -1,31 +1,31 @@
 <view class="index-wrapper">
-    <view class="index-container">
-        <view class="money-num">
-            <text>打赏金额</text>
-            <input type="text" value="{{moneyNum}}" bindinput="replaceMoneyVal" onfocus="clearMoneyVal" onblur="getResult"></input>
-            <text>元</text>
-        </view>
-        <view class="money-box">
-            <view class="money-item" bindtap="changeMoneyNum" data-number="2">2元</view>
-            <view class="money-item" bindtap="changeMoneyNum" data-number="5">5元</view>
-            <view class="money-item" bindtap="changeMoneyNum" data-number="10">10元</view>
-            <view class="money-item" bindtap="changeMoneyNum" data-number="15">15元</view>
-        </view>
-        <view class="packet-num">
-            <text>红包数量</text>
-            <input type="text" value="{{packetNum}}" bindinput="replacePacketVal" onfocus="clearPacketVal"  onblur="getPacket"></input>
-            <text>个</text>
-        </view>
-        <view class="answer-btn" bindtap="jumpToSelectQuestion">{{ answerList.question.length >= 10 ? "修改答案" : "开始选题" }}</view>
-        <text class="answer-desc" wx:if="{{ answerList.question.length >= 10 }}">(已选：答对5道以上才有红包哦)</text>
-        <text class="money-count">￥{{resultNumber}}</text>
-        <!-- {{resultNumber == 0 ? moneyNum * packetNum : resultNumber}} -->
-        <text class="money-desc">(需额外支付{{service}}元服务费)</text>
-        <view class="createPackect-btn"  bindtap="createPacket">生成红包</view>
-        <view class="index-footer">
-            <navigator url="/pages/myRecord/myRecord">我的记录</navigator>
-            <navigator url="/pages/payoutRule/payoutRule">玩法规则</navigator>
-            <navigator url="/pages/prizeWinner/prizeWinner">默契排行榜</navigator>
-        </view>
-    </view>
+	<view class="index-container">
+		<view class="money-num">
+			<text>打赏金额</text>
+			<input type="text" value="{{moneyNum}}" bindinput="replaceMoneyVal" onfocus="clearMoneyVal" onblur="getResult"></input>
+			<text>元</text>
+		</view>
+		<view class="money-box">
+			<view class="money-item" bindtap="changeMoneyNum" data-number="2">2元</view>
+			<view class="money-item" bindtap="changeMoneyNum" data-number="5">5元</view>
+			<view class="money-item" bindtap="changeMoneyNum" data-number="10">10元</view>
+			<view class="money-item" bindtap="changeMoneyNum" data-number="15">15元</view>
+		</view>
+		<view class="packet-num">
+			<text>红包数量</text>
+			<input type="text" value="{{packetNum}}" bindinput="replacePacketVal" onfocus="clearPacketVal" onblur="getPacket"></input>
+			<text>个</text>
+		</view>
+		<view class="answer-btn" bindtap="jumpToSelectQuestion">{{ answerList.question.length >= 10 ? "修改答案" : "开始选题" }}</view>
+		<text class="answer-desc" wx:if="{{ answerList.question.length >= 10 }}">(已选：答对{{condition}}道以上才有红包哦)</text>
+		<text class="money-count">￥{{resultNumber}}</text>
+		<!-- {{resultNumber == 0 ? moneyNum * packetNum : resultNumber}} -->
+		<text class="money-desc">(需额外支付{{service}}元服务费)</text>
+		<view class="createPackect-btn" bindtap="createPacket">生成红包</view>
+		<view class="index-footer">
+			<navigator url="/pages/myRecord/myRecord">我的记录</navigator>
+			<navigator url="/pages/payoutRule/payoutRule">玩法规则</navigator>
+			<navigator url="/pages/prizeWinner/prizeWinner">默契排行榜</navigator>
+		</view>
+	</view>
 </view>

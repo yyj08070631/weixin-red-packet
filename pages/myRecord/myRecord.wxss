@@ -1,19 +1,22 @@
 @import "../header/header.wxss";
-page{
-    background: #e0e0e0;    
+page {
+    background: #e0e0e0;
 }
-.pack-detail{
+
+.pack-detail {
     background: #fff;
     height: 100%;
 }
-.headbutton{
+
+.headbutton {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 24rpx;
 }
-.headbutton .out{
-    font-family: 微软雅黑 ;
+
+.headbutton .out {
+    font-family: 微软雅黑;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,8 +28,9 @@ page{
     width: 221rpx;
     border-radius: 50rpx 0 0 50rpx;
 }
-.headbutton .in{
-    font-family: 微软雅黑 ;
+
+.headbutton .in {
+    font-family: 微软雅黑;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,10 +42,9 @@ page{
     width: 221rpx;
     border-radius: 0 50rpx 50rpx 0;
 }
-.headbutton .isOut{
-   
 
-    font-family: 微软雅黑 ;
+.headbutton .isOut {
+    font-family: 微软雅黑;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,10 +55,10 @@ page{
     border: 2rpx solid #f92440;
     width: 221rpx;
     border-radius: 50rpx 0 0 50rpx;
-
 }
-.headbutton .isIn{
-    font-family: 微软雅黑 ;
+
+.headbutton .isIn {
+    font-family: 微软雅黑;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,122 +70,141 @@ page{
     width: 221rpx;
     border-radius: 0 50rpx 50rpx 0;
 }
-.myAvatar{
+
+.myAvatar {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 64rpx;
     margin-bottom: 26rpx;
-    
 }
-.myAvatar image{
+
+.myAvatar image {
     width: 150rpx;
     height: 150rpx;
     border-radius: 50%
 }
 
-.num{
+.num {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.num text{
-    font-family: 微软雅黑 ;
+
+.num text {
+    font-family: 微软雅黑;
     font-size: 30rpx;
     color: #382e2e;
 }
-.money{
+
+.money {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 60rpx;
     margin-bottom: 70rpx;
 }
-.money text{
-    font-family: 微软雅黑 ;
+
+.money text {
+    font-family: 微软雅黑;
     font-size: 90rpx;
     color: #272b2e;
 }
-.record-content{
+
+.record-content {
     background: #fff;
-    margin-top:20rpx; 
+    margin-top: 20rpx;
 }
-.record-content .record-item{
+
+.record-content .record-item {
     width: 100%;
     height: 110rpx;
-    display:flex;
-    align-items:center;/*垂直居中*/
-    justify-content: center;/*水平居中*/
+    display: flex;
+    align-items: center;
+    /*垂直居中*/
+    justify-content: center;
+    /*水平居中*/
     border-bottom: 2rpx solid #e0e0e0;
 }
-.record-item .icon-value{
+
+.record-item .icon-value {
     margin-top: 20rpx;
     margin-left: 21rpx;
     margin-right: 21rpx;
-    width: 36rpx; 
-    height: 36rpx;      
-    background-color:#ff8a00;
+    width: 36rpx;
+    height: 36rpx;
+    background-color: #ff8a00;
     -moz-border-radius: 18rpx;
     -webkit-border-radius: 18rpx;
     border-radius: 18rpx;
-    display:flex;
-    align-items:center;/*垂直居中*/
-    justify-content: center;/*水平居中*/
-    font-size:28rpx;
-    color:#fff;
+    display: flex;
+    align-items: center;
+    /*垂直居中*/
+    justify-content: center;
+    /*水平居中*/
+    font-size: 28rpx;
+    color: #fff;
 }
-.record-item .question{
-    font-family: 微软雅黑 ;
+
+.record-item .question {
+    font-family: 微软雅黑;
     font-size: 26rpx;
     color: #382e2e;
 }
-.record-item .time{
+
+.record-item .time {
     display: block;
-    font-family: 微软雅黑 ;
+    font-family: 微软雅黑;
     font-size: 26rpx;
     color: #909090;
 }
-.record-item .itemRight{
+
+.record-item .itemRight {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.record-item .arrowRight{
+
+.record-item .arrowRight {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.record-item .arrowRight image{
+
+.record-item .arrowRight image {
     width: 20rpx;
     height: 31rpx;
 }
-.record-item .itemLeft{
+
+.record-item .itemLeft {
     display: flex;
     width: 10%;
     height: 100%;
-    
 }
-.record-item .itemMiddle{
+
+.record-item .itemMiddle {
     width: 44%;
 }
-.record-item .itemRight{
+
+.record-item .itemRight {
     width: 36%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
 }
-.record-item .itemArrow{
+
+.record-item .itemArrow {
     margin-right: 46rpx
 }
-.record-item .arrowRight{
+
+.record-item .arrowRight {
     width: 10%;
     margin-right: 30rpx;
 }
-.itemRight text{
-    font-family: 微软雅黑 ;
+
+.itemRight text {
+    font-family: 微软雅黑;
     font-size: 26rpx;
     color: #382e2e;
 }
-
-

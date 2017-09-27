@@ -1,7 +1,7 @@
 <view class="myRecord-wrapper" wx:if="{{myRecordIsShow == false}}">
     <view class="pack-detail">
-            <import src="../header/header.wxml" />
-            <template is="temp" data="{{text: '我的记录'}}"/>
+        <import src="../header/header.wxml" />
+        <template is="temp" data="{{text: '我的记录'}}" />
         <view class="headbutton">
             <view bindtap="hideRecordTab" class="out">我发出的</view>
             <view bindtap="showRecordTab" class="in">我收到的</view>
@@ -10,14 +10,14 @@
             <image src="{{userInfoAvatar}}" />
         </view>
         <view class="num">
-            <text>{{nickName}}发出红包 6个共</text>
+            <text>{{nickName}}发出红包 {{Expend.number}}个共</text>
         </view>
         <view class="money">
-            <text>￥8.00</text>
+            <text>￥{{Expend.count_expend}}</text>
         </view>
     </view>
     <view class="record-content">
-        <navigator class="record-item" url="/pages/packetRecord/packetRecord">
+        <navigator class="record-item" url="/pages/packetRecord/packetRecord" wx:for="{{Expend.List}}">
             <view class="itemLeft">
                 <view class="icon-value">2</view>
             </view>
@@ -26,8 +26,8 @@
                 <text class="time">8月1日 14 : 05</text>
             </view>
             <view class="itemRight">
-                    <text>10元</text>
-                    <text>3/5个</text>
+                <text>{{item.page_money}}元</text>
+                <text>{{item.took}}/{{item.page_number}}个</text>
             </view>
             <view class="arrowRight">
                 <image src="/images/arrow_right.png" />
@@ -37,24 +37,24 @@
 </view>
 <view class="myRecord-wrapper" wx:if="{{myRecordIsShow == true}}">
     <view class="pack-detail">
-            <import src="../header/header.wxml" />
-            <template is="temp" data="{{text: '我的记录'}}"/>
+        <import src="../header/header.wxml" />
+        <template is="temp" data="{{text: '我的记录'}}" />
         <view class="headbutton">
             <view bindtap="hideRecordTab" class="isOut">我发出的</view>
             <view bindtap="showRecordTab" class="isIn">我收到的</view>
         </view>
         <view class="myAvatar">
-                <image src="{{userInfoAvatar}}" />
+            <image src="{{userInfoAvatar}}" />
         </view>
         <view class="num">
-            <text>{{nickName}}收到红包 6个共</text>
+            <text>{{nickName}}收到红包 {{Income.number}}个共</text>
         </view>
         <view class="money">
-            <text>￥8.00</text>
+            <text>￥{{Income.count_income}}</text>
         </view>
     </view>
     <view class="record-content">
-        <view class="record-item">
+        <view class="record-item" wx:for="{{Income.List}}">
             <view class="itemLeft">
                 <view class="icon-value">2</view>
             </view>
@@ -63,8 +63,7 @@
                 <text class="time">8月1日 14 : 05</text>
             </view>
             <view class="itemRight itemArrow">
-                    <text>10元</text>
-                    <text>3/5个</text>
+                <text>{{item.page_money}}元</text>
             </view>
         </view>
     </view>

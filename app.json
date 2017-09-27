@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "pages": [
     "pages/index/index",
     "pages/startAnswer/startAnswer",
@@ -27,4 +28,26 @@
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   }
+=======
+    "pages": [
+        "pages/index/index",
+        "pages/answerMain/answerMain",
+        "pages/selectQuestion/selectQuestion",
+        "pages/createPacket/createPacket",
+        "pages/startAnswer/startAnswer",
+        "pages/payAward/payAward",
+        "pages/packetRecord/packetRecord",
+        "pages/myRecord/myRecord",
+        "pages/checkAnswer/checkAnswer",
+        "pages/payoutRule/payoutRule",
+        "pages/prizeWinner/prizeWinner"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "white",
+        "navigationBarTitleText": "红包来啦",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    }
+>>>>>>> 05f89a483e6f2942beb59c42649a9e7d76d15472
 }
