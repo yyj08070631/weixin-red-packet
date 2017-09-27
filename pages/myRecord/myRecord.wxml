@@ -10,24 +10,24 @@
             <image src="{{userInfoAvatar}}" />
         </view>
         <view class="num">
-            <text>{{nickName}}发出红包 {{Expend.number}}个共</text>
+            <text>{{nickName}}发出红包 {{Expend.length==0?0:Expend.number}}个共</text>
         </view>
         <view class="money">
-            <text>￥{{Expend.count_expend}}</text>
+            <text>￥{{Expend.length==0?0:Expend.count}}</text>
         </view>
     </view>
     <view class="record-content">
-        <navigator class="record-item" url="/pages/packetRecord/packetRecord" wx:for="{{Expend.List}}">
+        <navigator class="record-item" url="/pages/packetRecord/packetRecord?id={{item.id}}" wx:for="{{Expend.list}}" wx:key="index">
             <view class="itemLeft">
-                <view class="icon-value">2</view>
+                <view class="icon-value">{{index+1}}</view>
             </view>
             <view class="itemMiddle">
-                <text class="question">猜猜我用哪个词来形容自己</text>
-                <text class="time">8月1日 14 : 05</text>
+                <text class="question">{{item.headline}}</text>
+                <text class="time">{{item.page_time}}</text>
             </view>
             <view class="itemRight">
                 <text>{{item.page_money}}元</text>
-                <text>{{item.took}}/{{item.page_number}}个</text>
+                <text>{{item.residue}}/{{item.page_number}}个</text>
             </view>
             <view class="arrowRight">
                 <image src="/images/arrow_right.png" />
@@ -47,23 +47,23 @@
             <image src="{{userInfoAvatar}}" />
         </view>
         <view class="num">
-            <text>{{nickName}}收到红包 {{Income.number}}个共</text>
+            <text>{{nickName}}收到红包 {{Income.length==0?0:Income.number}}个共</text>
         </view>
         <view class="money">
-            <text>￥{{Income.count_income}}</text>
+            <text>￥{{Income.length==0?0:Income.count}}</text>
         </view>
     </view>
     <view class="record-content">
-        <view class="record-item" wx:for="{{Income.List}}">
-            <view class="itemLeft">
-                <view class="icon-value">2</view>
+        <view class="record-item" wx:for="{{Income.list}}" wx:key="index">
+            <view class="itemLeft-income">
+                <view class="icon-value">{{index+1}}</view>
             </view>
-            <view class="itemMiddle">
-                <text class="question">猜猜我用哪个词来形容自己</text>
-                <text class="time">8月1日 14 : 05</text>
+            <view class="itemMiddle-income">
+                <text class="question">{{item.headline}}</text>
+                <text class="time">{{item.time}}</text>
             </view>
-            <view class="itemRight itemArrow">
-                <text>{{item.page_money}}元</text>
+            <view class="itemRight itemRight-income">
+                <text>{{item.income_money}}元</text>
             </view>
         </view>
     </view>
