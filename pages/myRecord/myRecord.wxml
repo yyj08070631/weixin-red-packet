@@ -19,7 +19,7 @@
     <view class="record-content">
         <navigator class="record-item" url="/pages/packetRecord/packetRecord?id={{item.id}}" wx:for="{{Expend.list}}" wx:key="index">
             <view class="itemLeft">
-                <view class="icon-value">{{index+1}}</view>
+                <view class="icon-value">{{item.index}}</view>
             </view>
             <view class="itemMiddle">
                 <text class="question">{{item.headline}}</text>
@@ -56,7 +56,7 @@
     <view class="record-content">
         <view class="record-item" wx:for="{{Income.list}}" wx:key="index">
             <view class="itemLeft-income">
-                <view class="icon-value">{{index+1}}</view>
+                <view class="icon-value">{{item.index}}</view>
             </view>
             <view class="itemMiddle-income">
                 <text class="question">{{item.headline}}</text>
