@@ -35,7 +35,7 @@ Page({
 	},
 	//页面加载完钩子函数
 	onLoad: function (options) {
-		console.log(options)
+		// console.log(options)
 		var self = this
 		wx.getStorage({
 			key: 'question',
@@ -69,59 +69,9 @@ Page({
 				}
 			}
 		})
-		wx.getUserInfo({
-			success: function (res) {
-				console.log(res)
-				console.log(self.data.nickName + '\n' + self.data.userInfoAvatar + '\n' + self.data.province + '\n' + self.data.city)
-				switch (res.userInfo.gender) {
-					case 0:
-						self.setData({
-							sex: '未知'
-						})
-						break;
-					case 1:
-						self.setData({
-							sex: '男'
-						})
-						break;
-					case 2:
-						self.setData({
-							sex: '女'
-						})
-						break;
-				}
-				self.setData({
-					nickName: res.userInfo.nickName,
-					userInfoAvatar: res.userInfo.avatarUrl,
-					province: res.userInfo.province,
-					city: res.userInfo.city,
-					sex: res.userInfo.gender,
-				})
-				wx.setStorage({
-					key: 'userInfo',
-					data: {
-						nickName: res.userInfo.nickName,
-						userInfoAvatar: res.userInfo.avatarUrl,
-						province: res.userInfo.province,
-						city: res.userInfo.city,
-						sex: res.userInfo.gender,
-					},
-
-				})
-
-			},
-			fail: function () {
-				// fail
-				console.log("获取失败！")
-			},
-			complete: function () {
-				// complete
-				console.log("获取用户信息完成！")
-			}
-		})
 		// 加载页面数据
 		wx.request({
-			url: app.globalData.ajaxUrl + '/RedPage/game/index',
+			url: app.globalData.ajaxUrl + '/page/index',
 			method: 'POST',
 			header: {
 				'content-type': 'application/json'
@@ -135,7 +85,7 @@ Page({
 				})
 			},
 			fail() {
-				console.log(userInfoList.sex)
+				console.log('Request err');
 			}
 		})
 	},
