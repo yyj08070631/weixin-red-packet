@@ -27,8 +27,10 @@ Page({
 		quesKey: 0, // 更换问题的值
 		// item的背景数组，默认全部未选中
 		urlList: [],
-		answerList: [] // 存储5个题目和答案的数组
+		answerList: [], // 存储5个题目和答案的数组
 		// condition: 0, // 答对多少题才有红包
+		expendId: 0, // 个人发出红包id
+		incomeId: 0 // 个人收入红包id
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -69,7 +71,7 @@ Page({
 				}
 			}
 		})
-		// 加载页面数据
+		// 后台加载数据
 		wx.request({
 			url: app.globalData.ajaxUrl + '/RedPage/page/index',
 			method: 'POST',
@@ -78,17 +80,17 @@ Page({
 			},
 			success(res) {
 				self.setData({
-					// serviceRate: res.service // 服务费比例
-					serviceRate: 10 // 模拟数据
+					serviceRate: res.data.service // 服务费比例
+					// serviceRate: 10 // 模拟数据
 					// condition: res.condition, // 答对多少题才有红包
 					// condition: 6 // 模拟数据
 				})
-				console.log(self.data.serviceRate);
+				// console.log(self.data.serviceRate);
 			},
 			fail() {
 				console.log('Request err');
 			}
-		})
+		});
 	},
 	// 选中图标变换
 	// 红包限制
@@ -249,10 +251,10 @@ Page({
 										answer: self.data.aidArr.join(',') // 答案id
 									},
 									success(res) {
-										console.log(res);
-										// wx.navigateTo({
-										// 	url: '/pages/createPacket/createPacket?packetMoney=' + self.data.moneyNum,
-										// });
+										// console.log(res);
+										wx.navigateTo({
+											url: '/pages/createPacket/createPacket?packetMoney=' + self.data.moneyNum + '&pid=' + res.data,
+										});
 									},
 									fail() {
 										console.log('Request err')
