@@ -2,7 +2,7 @@
 App({
 	globalData: {
 		userInfo: [],
-		ajaxUrl: 'http://miniapp.qingmeng168.com/RedPage',
+		ajaxUrl: 'http://miniapp.qingmeng168.com',
 		code: 0
 	},
 	onLaunch: function () {
@@ -11,29 +11,29 @@ App({
 		// logs.unshift(Date.now());
 		// wx.setStorageSync('logs', logs);
 		let self = this;
-		wx.checkSession({
-			success: function () {
-				// session 未过期，并且在本生命周期一直有效
-				console.log('session 未过期，并且在本生命周期一直有效');
-			},
-			fail: function () {
+		// wx.checkSession({
+		// 	success: function () {
+		// 		// session 未过期，并且在本生命周期一直有效
+		// 		console.log('session 未过期，并且在本生命周期一直有效');
+		// 	},
+		// 	fail: function () {
 				// 登录态过期
 				// 授权登录接口
 				wx.login({
 					success: function (res) {
 						if (res.code) {
-							self.globalData.code = res.code;
+							getApp().globalData.code = res.code;
 						} else {
 							console.log('获取用户登录态失败！' + res.errMsg)
 						}
 					}
 				});
-			}
-		})
+		// 	}
+		// })
 		// 获取用户信息
 		wx.getUserInfo({
 			success: function (res) {
-				console.log(res)
+				// console.log(res)
 				// console.log(self.data.nickName + '\n' + self.data.userInfoAvatar + '\n' + self.data.province + '\n' + self.data.city)
 				let userInfo = {
 					nickName: res.userInfo.nickName,
@@ -44,7 +44,7 @@ App({
 				};
 				// 发起网络请求
 				wx.request({
-					url: self.globalData.ajaxUrl + '/page/aways',
+					url: self.globalData.ajaxUrl + '/RedPage/page/aways',
 					method: 'POST',
 					data: {
 						code: String(self.globalData.code),
@@ -55,7 +55,7 @@ App({
 						head: userInfo.userInfoAvatar
 					},
 					success(res) {
-						console.log(res.data);
+						// console.log(res.data);
 						wx.setStorage({
 							key: '3rd_session',
 							data: res.data['3rd_session']

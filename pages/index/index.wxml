@@ -17,7 +17,7 @@
 			<text>个</text>
 		</view>
 		<view class="answer-btn" bindtap="jumpToSelectQuestion">{{ answerList.question.length >= 10 ? "修改答案" : "开始选题" }}</view>
-		<text class="answer-desc" wx:if="{{ answerList.question.length >= 10 }}">(已选：答对{{condition}}道以上才有红包哦)</text>
+		<text class="answer-desc" wx:if="{{ answerList.question.length >= 10 }}">(已选：答对8道以上才有红包哦)</text>
 		<text class="money-count">￥{{resultNumber}}</text>
 		<!-- {{resultNumber == 0 ? moneyNum * packetNum : resultNumber}} -->
 		<text class="money-desc">(需额外支付{{service}}元服务费)</text>

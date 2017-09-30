@@ -27,8 +27,8 @@ Page({
 		quesKey: 0, // 更换问题的值
 		// item的背景数组，默认全部未选中
 		urlList: [],
-		answerList: [], // 存储5个题目和答案的数组
-		condition: 0, // 答对多少题才有红包
+		answerList: [] // 存储5个题目和答案的数组
+		// condition: 0, // 答对多少题才有红包
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -42,7 +42,7 @@ Page({
 			success: function (res) {
 				let qidArr = [],
 					aidArr = [];
-				res.data.question.map(function(val, key){
+				res.data.question.map(function (val, key) {
 					qidArr.push(val.qid);
 					aidArr.push(val.aid);
 				})
@@ -71,18 +71,19 @@ Page({
 		})
 		// 加载页面数据
 		wx.request({
-			url: app.globalData.ajaxUrl + '/page/index',
+			url: app.globalData.ajaxUrl + '/RedPage/page/index',
 			method: 'POST',
 			header: {
 				'content-type': 'application/json'
 			},
 			success(res) {
 				self.setData({
-					// serviceRate: res.service, // 服务费比例
-					serviceRate: 10, // 模拟数据
+					// serviceRate: res.service // 服务费比例
+					serviceRate: 10 // 模拟数据
 					// condition: res.condition, // 答对多少题才有红包
-					condition: 6 // 模拟数据
+					// condition: 6 // 模拟数据
 				})
+				console.log(self.data.serviceRate);
 			},
 			fail() {
 				console.log('Request err');
@@ -229,32 +230,36 @@ Page({
 							showCancel: false
 						})
 					} else {
-						wx.request({
-							url: app.globalData.ajaxUrl + '/RedPage/topic/create',
-							method: 'POST',
-							header: {
-								'content-type': 'application/json'
-							},
-							data: {
-								page_money: String(self.data.moneyNum / self.data.packetNum), // 每个红包多少钱
-								packet_number: String(self.data.packetNum), // 红包个数
-								total: String(self.data.resultNumber), // 总共支出多少钱
-								service: String(self.data.service), // 服务费
-								head: self.data.userInfoAvatar, // 用户头像
-								tid: JSON.stringify(self.data.qidArr), // 问题id
-								name: self.data.nickName, // 用户名字
-								answer: JSON.stringify(self.data.aidArr) // 答案id
-							},
-							success(res) {
-								console.log(res);
-								// wx.navigateTo({
-								// 	url: '/pages/createPacket/createPacket?packetMoney=' + self.data.moneyNum,
-								// });
-							},
-							fail() {
-								console.log('Request err')
+						wx.getStorage({
+							key: 'userId',
+							success: function (storage) {
+								wx.request({
+									url: app.globalData.ajaxUrl + '/RedPage/topic/create',
+									method: 'POST',
+									header: {
+										'content-type': 'application/json'
+									},
+									data: {
+										id: String(storage.data), // 用户id
+										page_money: self.data.moneyNum + '.01', // 这个红包多少钱
+										packet_number: String(self.data.packetNum), // 红包个数
+										total: String(self.data.resultNumber), // 总共支出多少钱
+										service: String(self.data.service), // 服务费
+										tid: self.data.qidArr.join(','), // 问题id
+										answer: self.data.aidArr.join(',') // 答案id
+									},
+									success(res) {
+										console.log(res);
+										// wx.navigateTo({
+										// 	url: '/pages/createPacket/createPacket?packetMoney=' + self.data.moneyNum,
+										// });
+									},
+									fail() {
+										console.log('Request err')
+									}
+								});
 							}
-						});
+						})
 					}
 				}
 
