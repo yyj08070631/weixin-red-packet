@@ -10,7 +10,8 @@ Page({
         sex: '',
         province: '',
         city: '',
-        recordInfo: {}
+        recordInfo: {},
+        id: '' //红包id
     },
 
     /**
@@ -19,7 +20,7 @@ Page({
     onLoad: function(options) {
         let self = this
         console.log(options)
-        let id = options.id
+        self.data.id = options.id
         wx.getUserInfo({
             success: function(res) {
                 self.setData({
@@ -58,7 +59,7 @@ Page({
             }
         })
         wx.request({
-            url: 'http://miniapp.qingmeng168.com/RedPage/page/record?id=' + id,
+            url: 'http://miniapp.qingmeng168.com/RedPage/page/record?id=' + self.data.id,
             data: {},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
@@ -126,13 +127,14 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function(res) {
+        var self = this
         if (res.from === 'button') {
             // 来自页面内转发按钮
             console.log(res.target)
         }
         return {
             title: '我包你答',
-            path: '/pages/startAnswer/startAnswer?id=',
+            path: '/pages/startAnswer/startAnswer?id=' + self.data.id,
             imageUrl: '../../images/share.jpg',
             success: function(res) {
                 // 转发成功

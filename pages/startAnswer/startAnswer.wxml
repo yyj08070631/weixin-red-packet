@@ -1,10 +1,12 @@
 <view class="startAnswer-wrapper">
     <view class="startAnswer-container">
-        <image class="avatar" src="{{userInfoAvatar}}"></image>
-        <text class="name">{{nickName}}</text>
+        <image class="avatar" src="{{returnData.user.head}}"></image>
+        <text class="name">{{returnData.user.name}}</text>
         <text class="question">你了解他吗？快来测试一下吧！</text>
         <text class="desc">（答对了有红包拿哦）</text>
-        <navigator class="send-btn" url="/pages/answerMain/answerMain">开始答题</navigator>
+        <view class="return-info" wx:if="{{returnData.income}}">￥{{returnData.income}}</view>
+        <view class="return-info" wx:elif="{{returnData.residue == 0}}">已领完</view>
+        <navigator class="send-btn" url="/pages/answerMain/answerMain" wx:else="{{returnData.residue != 0}}">开始答题</navigator>
     </view>
     <view class="handle-tab">
         <button class="item-left" open-type="share">
@@ -17,16 +19,16 @@
         </navigator>
     </view>
     <view class="detail-container">
-        <view class="detail-item">
-            <image src="../../images/avatar.png"></image>
+        <view class="detail-item" wx:for="{{returnData.list}}" wx:key="index">
+            <image src="{{item.user.head}}"></image>
             <view class="user-desc">
-                <text>刘三姐</text>
-                <text>默契度90%</text>
+                <text>{{item.user.name}}</text>
+                <text>默契度{{item.percentnum}}</text>
             </view>
             <view class="divide"></view>
             <view class="packet-desc">
-                <text>领到2.01元</text>
-                <text>答对9题     15:31</text>
+                <text>领到{{item.money}}元</text>
+                <text>答对{{item.correct}}题     {{item.time}}</text>
             </view>
         </view>
     </view>

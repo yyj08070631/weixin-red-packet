@@ -71,7 +71,9 @@ Page({
                 },
                 data: {},
                 success(res) {
+                    console.log(res)
                     let userList = res.data.list
+                    console.log(userList)
                     for (let i = 0; i < userList.length; i++) {
                         userList[i].index = userList.length - i;
                         userList[i].page_time = userList[i].page_time.split(' ')[0].split('-')[1] + '月' + userList[i].page_time.split(' ')[0].split('-')[2] + '日' + '  ' + userList[i].page_time.split(' ')[1].split(':')[0] + ' : ' + userList[i].page_time.split(' ')[1].split(':')[1]
