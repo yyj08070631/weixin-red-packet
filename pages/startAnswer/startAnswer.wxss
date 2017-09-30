@@ -1,43 +1,60 @@
-page{
+page {
     width: 750rpx;
     height: 100%;
     background: #e0e0e0
 }
+
+
 /* 外层 */
-.startAnswer-wrapper{
+
+.startAnswer-wrapper {
     background: #e0e0e0
 }
+
+
 /* 答题面板 */
-.startAnswer-container{
+
+.startAnswer-container {
     width: 100%;
     height: 613rpx;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
-    background: url(../../images/detail-bg.png)no-repeat;
+    background: url("http://miniapp.qingmeng168.com/img/detail-bg.png")no-repeat;
     background-size: 100% 613rpx;
 }
-.startAnswer-container .avatar{
+
+.startAnswer-container .avatar {
     margin-top: 86rpx;
     width: 150rpx;
     height: 150rpx;
     border-radius: 50%;
 }
-.startAnswer-container .name{
+
+.startAnswer-container .name {
     margin-top: 10rpx;
     font-size: 30rpx;
 }
-.startAnswer-container .question{
+
+.startAnswer-container .question {
     margin-top: 23rpx;
     font-size: 30rpx;
 }
-.startAnswer-container .desc{
+
+.startAnswer-container .desc {
     margin-top: 10rpx;
     font-size: 30rpx;
     color: #f87501
 }
 
-.startAnswer-container .send-btn{
+.startAnswer-container .return-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 25rpx;
+    font-size: 90rpx;
+}
+
+.startAnswer-container .send-btn {
     margin-top: 36rpx;
     width: 330rpx;
     height: 84rpx;
@@ -45,100 +62,130 @@ page{
     text-align: center;
     border-radius: 50rpx;
     color: #fff;
-    background: #ef304a; 
+    background: #ef304a;
 }
+
+
 /* 转发面板 */
-.handle-tab{
+
+.handle-tab {
     display: flex;
     margin-bottom: 20rpx;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     height: 104rpx;
     background: #fff;
 }
-.handle-tab .item-left{
+
+.handle-tab .item-left {
     flex: 1;
-    margin-left: 170rpx;
+    margin-left: 150rpx;
     height: 100%;
-    
 }
-.handle-tab button{
+
+.handle-tab button {
     padding: 0 40rpx 0 0;
     background: #fff;
-    line-height:100rpx;
+    line-height: 100rpx;
 }
-.handle-tab button:after{
+
+.handle-tab button:after {
     border: none
 }
-.handle-tab .item-left image{
+
+.handle-tab .item-left image {
     vertical-align: middle;
     width: 36rpx;
     height: 36rpx;
 }
-.handle-tab .item-right{
+
+.handle-tab .item-right {
     flex: 1;
     margin-right: 128rpx;
 }
-.handle-tab .item-right image{
+
+.handle-tab .item-right image {
     vertical-align: middle;
     width: 36rpx;
     height: 36rpx;
 }
-.handle-tab .item-right text,.handle-tab .item-left text{
+
+.handle-tab .item-right text,
+.handle-tab .item-left text {
     margin-left: 14rpx;
     vertical-align: middle;
     font-size: 30rpx;
     color: #4a5dd6
 }
+
+
 /* 红包领取详情 */
-.detail-container{
+
+.detail-container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    
 }
-.detail-container .detail-item{
+
+.detail-container .detail-item {
     display: flex;
     padding: 20rpx 32rpx;
     flex: 1;
     border-bottom: 1px solid #bbb79c;
     background: #fff
 }
-.detail-container .detail-item:last-child{
+
+.detail-container .detail-item:last-child {
     border: none
 }
-.detail-container .detail-item image,.detail-container .detail-item text{
+
+.detail-container .detail-item image,
+.detail-container .detail-item text {
     display: block
 }
-.detail-container .detail-item image{
+
+.detail-container .detail-item image {
     width: 90rpx;
     height: 90rpx;
 }
+
+
 /* 用户信息 */
-.detail-container .detail-item .user-desc{
+
+.detail-container .detail-item .user-desc {
     margin-left: 20rpx;
     font-size: 30rpx;
 }
-.detail-container .detail-item .user-desc text{
+
+.detail-container .detail-item .user-desc text {
     font-size: 28rpx;
 }
-.detail-container .detail-item .user-desc text:last-child{
+
+.detail-container .detail-item .user-desc text:last-child {
     color: #999
 }
+
+
 /* 分割块 */
-.detail-container .detail-item .divide{
+
+.detail-container .detail-item .divide {
     flex: 1
 }
+
+
 /* 红包领取情况 */
-.detail-container .detail-item .packet-desc{
+
+.detail-container .detail-item .packet-desc {
     margin-left: 20rpx;
     font-size: 30rpx;
     text-align: right
 }
-.detail-container .detail-item .packet-desc text{
+
+.detail-container .detail-item .packet-desc text {
     font-size: 28rpx;
 }
-.detail-container .detail-item .packet-desc text:last-child{
+
+.detail-container .detail-item .packet-desc text:last-child {
     color: #999
 }

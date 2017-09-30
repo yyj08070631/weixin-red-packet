@@ -207,18 +207,9 @@ Page({
 
 
 	for(let i = 0; i < storageProblem.length; i ++ ){
-		if(storageProblem[i].aid === undefined){
-			wx.showModal({
-				title: '提示',
-				content: '您还有问题没答完',
-				success(res) {
-				  	if (res.confirm) {
-				  	}
-				}
-			})
-		}else{
-				response_answer.push(storageProblem[i].aid);
-				sid.push(storageProblem[i].id)			
+			if(storageProblem[i].aid !== undefined){
+					response_answer.push(storageProblem[i].aid);
+					sid.push(storageProblem[i].id)			
 		}
 	}
 	if(response_answer.length === 10 && sid.length === 10){
@@ -247,10 +238,16 @@ Page({
 				// console.log(res)
 			}
 		})	
+	}else{
+		wx.showModal({
+			title: '提示',
+			content: '您还有问题没答完',
+			success(res) {
+					if (res.confirm) {
+					}
+			}
+		})
 	}
-	
-	
-	
   }
 	
 })

@@ -2,6 +2,7 @@
 var app = getApp()
 Page({
 
+
     /**
      * 页面的初始数据
      */
@@ -13,6 +14,7 @@ Page({
         sex: '', //用户性别
         province: '', //省份
         city: '', //城市
+        uid: '',
         Expend: {}, //我的发出数据
         Income: {} //我的收入数据
     },
@@ -22,8 +24,79 @@ Page({
      */
     onLoad: function(options) {
         let self = this
+            //获取本地存储的用户id
+        wx.getStorage({
+            key: 'userId',
+            success: function(res) {
+                console.log(res)
+                self.setData({
+                        uid: res.data
+                    })
+                    //请求我的发出的数据
+                wx.request({
+                        url: app.globalData.ajaxUrl + '/RedPage/money/expend',
+                        method: 'POST',
+                        header: {
+                            'content-type': 'application/json'
+                        },
+                        data: {
+                            id: String(res.data)
+                        },
+                        success(res) {
+                            console.log(res)
+                            let userList = res.data.list
+                            console.log(userList)
+                            for (let i = 0; i < userList.length; i++) {
+                                userList[i].index = userList.length - i;
+                                userList[i].page_time = userList[i].page_time.split(' ')[0].split('-')[1] + '月' + userList[i].page_time.split(' ')[0].split('-')[2] + '日' + '  ' + userList[i].page_time.split(' ')[1].split(':')[0] + ' : ' + userList[i].page_time.split(' ')[1].split(':')[1]
+
+                            }
+                            self.setData({
+                                Expend: res.data
+                            })
+
+                            console.log(self.data)
+                        },
+                        fail(res) {
+                            // console.log(res)
+                        }
+                    })
+                    //请求我的收入的数据
+                console.log(self.data)
+                wx.request({
+                    url: app.globalData.ajaxUrl + '/RedPage/money/income',
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    data: {
+                        id: String(res.data)
+                    },
+                    success(res) {
+                        let userList = res.data.list
+                        for (let i = 0; i < userList.length; i++) {
+                            userList[i].index = userList.length - i;
+                            userList[i].time = userList[i].time.split(' ')[0].split('-')[1] + '月' + userList[i].time.split(' ')[0].split('-')[2] + '日' + '  ' + userList[i].time.split(' ')[1].split(':')[0] + ' : ' + userList[i].time.split(' ')[1].split(':')[1]
+
+                        }
+                        self.setData({
+                            Income: res.data
+                        })
+                    },
+                    fail(res) {
+                        console.log(res)
+                    }
+                })
+            }
+        })
+        setTimeout(function() {
+            console.log(self.data.uid)
+        }, 2000);
+
+        //获取用户信息
         wx.getUserInfo({
             success: function(res) {
+                console.log(res)
                 self.setData({
                     nickName: res.userInfo.nickName,
                     userInfoAvatar: res.userInfo.avatarUrl,
@@ -50,8 +123,9 @@ Page({
                 }
 
             },
-            fail: function() {
+            fail: function(res) {
                 // fail
+                console.log(res)
                 console.log("获取失败！")
             },
             complete: function() {
@@ -59,48 +133,6 @@ Page({
                 console.log("获取用户信息完成！")
             }
         })
-        wx.request({
-            url: 'https://miniapp.qingmeng168.com/RedPage/money/expend?id=2',
-            method: 'POST',
-            header: {
-                'content-type': 'application/json'
-            },
-            data: {},
-            success(res) {
-                console.log(res)
-                res.data.list.map(function(item) {
-                    item.page_time = item.page_time.split(' ')[0].split('-')[1] + '月' + item.page_time.split(' ')[0].split('-')[2] + '日' + '  ' + item.page_time.split(' ')[1].split(':')[0] + ' : ' + item.page_time.split(' ')[1].split(':')[1]
-                })
-                self.setData({
-                    Expend: res.data
-                })
-
-                console.log(self.data)
-            },
-            fail(res) {
-                // console.log(res)
-            }
-        })
-        wx.request({
-            url: 'https://miniapp.qingmeng168.com/RedPage/money/income?id=10',
-            method: 'POST',
-            header: {
-                'content-type': 'application/json'
-            },
-            data: {},
-            success(res) {
-                res.data.list.map(function(item) {
-                    item.time = item.time.split(' ')[0].split('-')[1] + '月' + item.time.split(' ')[0].split('-')[2] + '日' + '  ' + item.time.split(' ')[1].split(':')[0] + ' : ' + item.time.split(' ')[1].split(':')[1]
-                })
-                self.setData({
-                    Income: res.data
-                })
-            },
-            fail(res) {
-                console.log(res)
-            }
-        })
-
     },
 
     /**
@@ -148,9 +180,19 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
-
-    },
+    // onShareAppMessage: function() {
+    //     return {
+    //         title: '自定义转发标题',
+    //         path: '/pages/startAnswer/startAnswer?id=',
+    //         imgUrl: '../../images/share.jpg',
+    //         success: function(res) {
+    //             // 转发成功
+    //         },
+    //         fail: function(res) {
+    //             // 转发失败
+    //         }
+    //     }
+    // },
     // 事件区
     gobackHistory: function() {
         wx.navigateBack();
@@ -163,24 +205,31 @@ Page({
             myRecordIsShow: false
         })
         console.log(this.data.myRecordIsShow)
+        console.log(self.data.uid);
         wx.request({
-            url: 'https://miniapp.qingmeng168.com/RedPage/money/expend?id=2',
+            url: app.globalData.ajaxUrl + '/RedPage/money/expend',
             method: 'POST',
             header: {
                 'content-type': 'application/json'
             },
-            data: {},
+            data: {
+                id: String(self.data.uid)
+            },
             success(res) {
-                console.log(res)
-                res.data.list.map(function(item) {
-                    item.page_time = item.page_time.split(' ')[0].split('-')[1] + '月' + item.page_time.split(' ')[0].split('-')[2] + '日' + '  ' + item.page_time.split(' ')[1].split(':')[0] + ' : ' + item.page_time.split(' ')[1].split(':')[1]
-                })
+                let userList = res.data.list
+                for (let i = 0; i < userList.length; i++) {
+                    userList[i].index = userList.length - i;
+                    userList[i].page_time = userList[i].page_time.split(' ')[0].split('-')[1] + '月' + userList[i].page_time.split(' ')[0].split('-')[2] + '日' + '  ' + userList[i].page_time.split(' ')[1].split(':')[0] + ' : ' + userList[i].page_time.split(' ')[1].split(':')[1]
+
+                }
                 self.setData({
                     Expend: res.data
                 })
+
+                console.log(self.data)
             },
             fail(res) {
-                console.log(res)
+                // console.log(res)
             }
         })
     },
@@ -190,20 +239,24 @@ Page({
             myRecordIsShow: true
         })
         console.log(this.data.myRecordIsShow)
+        console.log(self.data.uid);
         wx.request({
-            url: 'https://miniapp.qingmeng168.com/RedPage/money/income?id=10',
+            url: app.globalData.ajaxUrl + '/RedPage/money/income',
             method: 'POST',
             header: {
                 'content-type': 'application/json'
             },
             data: {
-                id: 10
+                id: String(self.data.uid)
             },
             success(res) {
                 console.log(res)
-                res.data.list.map(function(item) {
-                    item.time = item.time.split(' ')[0].split('-')[1] + '月' + item.time.split(' ')[0].split('-')[2] + '日' + '  ' + item.time.split(' ')[1].split(':')[0] + ' : ' + item.time.split(' ')[1].split(':')[1]
-                })
+                let userList = res.data.list
+                for (let i = 0; i < userList.length; i++) {
+                    userList[i].index = userList.length - i;
+                    userList[i].time = userList[i].time.split(' ')[0].split('-')[1] + '月' + userList[i].time.split(' ')[0].split('-')[2] + '日' + '  ' + userList[i].time.split(' ')[1].split(':')[0] + ' : ' + userList[i].time.split(' ')[1].split(':')[1]
+
+                }
                 self.setData({
                     Income: res.data
                 })
@@ -212,6 +265,6 @@ Page({
                 console.log(res)
             }
         })
-    }
 
+    }
 })

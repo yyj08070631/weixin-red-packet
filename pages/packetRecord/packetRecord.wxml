@@ -22,7 +22,7 @@
         <view class="count">共{{recordInfo.page.page_money}}元，已领取{{recordInfo.page.residue}}/{{recordInfo.page.page_number}}个</view>
     </view>
     <view class="winner-container">
-        <view class="winner-item" wx:for="{{recordInfo.userList}}">
+        <view class="winner-item" wx:for="{{recordInfo.userList}}" wx:key="index">
             <view class="winner-avatar">
                 <image src="{{item.head}}" />
             </view>

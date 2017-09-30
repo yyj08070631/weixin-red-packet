@@ -85,7 +85,8 @@ page{
     font-size: 30rpx;
     text-align: center;
     border-radius: 50rpx;
-    background: #ebc521;
+    /* background: #ebc521; */
+    background-color: #fef9d2;
     color: #f92241;
 }
 

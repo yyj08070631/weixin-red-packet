@@ -5,66 +5,42 @@
 		<view class="item-first">
 			<view class="pos-wrapper">
 				<image src="../../images/wing1.png"></image>
-				<image class="prize-winner-avatar" src="../../images/prize-winner1.png"></image>
+				<image class="prize-winner-avatar" src="{{dataUp[0].head}}"></image>
 				<image src="../../images/award1.png" class="winner-award"></image>
-				<text class="prize-winner-username">李晓明发癫</text>
-				<text class="prize-winner-desc">答对6题 98%</text>
+				<text class="prize-winner-username">{{dataUp[0].name}}</text>
+				<text class="prize-winner-desc">答对{{dataUp[0].correct}}题 {{dataUp[0].percentum}}%</text>
 			</view>
 		</view>
 		<view class="item-second">
 			<view class="pos-wrapper">
 				<image src="../../images/wing2.png"></image>
-				<image class="prize-winner-avatar" src="../../images/prize-winner2.png"></image>
+				<image class="prize-winner-avatar" src="{{dataUp[1].head}}"></image>
 				<image src="../../images/award2.png" class="winner-award"></image>
-				<text class="prize-winner-username">李晓明发癫</text>
-				<text class="prize-winner-desc">答对6题 98%</text>
+				<text class="prize-winner-username">{{dataUp[1].name}}</text>
+				<text class="prize-winner-desc">答对{{dataUp[1].correct}}题 {{dataUp[1].percentum}}%</text>
 			</view>
 		</view>
 		<view class="item-third">
 			<view class="pos-wrapper">
 				<image src="../../images/wing3.png"></image>
-				<image class="prize-winner-avatar" src="../../images/prize-winner3.png"></image>
+				<image class="prize-winner-avatar" src="{{dataUp[2].head}}"></image>
 				<image src="../../images/award3.png" class="winner-award"></image>
-				<text class="prize-winner-username">李晓明发癫</text>
-				<text class="prize-winner-desc">答对6题 98%</text>
+				<text class="prize-winner-username">{{dataUp[2].name}}</text>
+				<text class="prize-winner-desc">答对{{dataUp[2].correct}}题 {{dataUp[2].percentum}}%</text>
 			</view>
 		</view>
 	</view>
 	<view class="other-winner-container">
-		<view class="other-winner-item">
-			<image src="../../images/user-avatar1.png" class="other-winner-avatar"></image>
+		<view class="other-winner-item" wx:for="{{dataDown}}" wx:for-index="key" wx:for-item="val">
+			<image src="{{val.head}}" class="other-winner-avatar"></image>
 			<view class="other-winner-info">
-				<text>刘青裙</text>
-				<text>第4名</text>
+				<text>{{val.name}}</text>
+				<text>第{{val.rank}}名</text>
 			</view>
 			<view></view>
 			<view class="other-winner-desc">
-				<text>默契度：90%</text>
-				<text>答对4题</text>
-			</view>
-		</view>
-		<view class="other-winner-item">
-			<image src="../../images/user-avatar1.png" class="other-winner-avatar"></image>
-			<view class="other-winner-info">
-				<text>刘青裙</text>
-				<text>第4名</text>
-			</view>
-			<view></view>
-			<view class="other-winner-desc">
-				<text>默契度：90%</text>
-				<text>答对4题</text>
-			</view>
-		</view>
-		<view class="other-winner-item">
-			<image src="../../images/user-avatar1.png" class="other-winner-avatar"></image>
-			<view class="other-winner-info">
-				<text>刘青裙</text>
-				<text>第4名</text>
-			</view>
-			<view></view>
-			<view class="other-winner-desc">
-				<text>默契度：90%</text>
-				<text>答对4题</text>
+				<text>默契度：{{val.percentum}}%</text>
+				<text>答对{{val.correct}}题</text>
 			</view>
 		</view>
 	</view>
