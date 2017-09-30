@@ -198,7 +198,8 @@ Page({
                 }
 
                 <<
-                << << < HEAD
+                <<
+                << < HEAD
             },
             //清空金额数值
             changeMoneyNum: function(e) {
@@ -259,7 +260,8 @@ Page({
                                     });
                                 }
                             } ===
-                            === =
+                            ===
+                            =
                         },
                         //清空金额数值
                         changeMoneyNum: function(e) {
@@ -323,9 +325,7 @@ Page({
                                                     }
                                                 })
                                             }
-                                        } >>>
-                                        >>> > 716604 d653d2e7d8a38eff14cbcfaa3632b97998
-
+                                        }
                                     },
                                 })
                                 //   wx.requestPayment({

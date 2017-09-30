@@ -75,10 +75,10 @@ Page({
             header: {
                 'content-type': 'application/json'
             },
-            data: {
+            data: JSON.stringify({
                 tid: String(self.data.tid),
                 uid: String(self.data.uid)
-            },
+            }),
             success(res) {
                 console.log(res)
                 res.data.list.map(function(item) {
