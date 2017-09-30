@@ -11,30 +11,30 @@ App({
         // logs.unshift(Date.now());
         // wx.setStorageSync('logs', logs);
         let self = this;
-        wx.checkSession({
-                success: function() {
-                    // session 未过期，并且在本生命周期一直有效
-                    console.log('session 未过期，并且在本生命周期一直有效');
-                },
-                fail: function() {
-                    // 登录态过期
-                    // 授权登录接口
-                    wx.login({
-                        success: function(res) {
-                            if (res.code) {
-                                self.globalData.code = res.code;
-                            } else {
-                                console.log('获取用户登录态失败！' + res.errMsg)
-                            }
-                        }
-                    });
+        // wx.checkSession({
+        // 	success: function () {
+        // 		// session 未过期，并且在本生命周期一直有效
+        // 		console.log('session 未过期，并且在本生命周期一直有效');
+        // 	},
+        // 	fail: function () {
+        // 登录态过期
+        // 授权登录接口
+        wx.login({
+            success: function(res) {
+                if (res.code) {
+                    getApp().globalData.code = res.code;
+                } else {
+                    console.log('获取用户登录态失败！' + res.errMsg)
                 }
-            })
-            // 获取用户信息
+            }
+        });
+        // 	}
+        // })
+        // 获取用户信息
         wx.getUserInfo({
             success: function(res) {
-                console.log(res)
-                    // console.log(self.data.nickName + '\n' + self.data.userInfoAvatar + '\n' + self.data.province + '\n' + self.data.city)
+                // console.log(res)
+                // console.log(self.data.nickName + '\n' + self.data.userInfoAvatar + '\n' + self.data.province + '\n' + self.data.city)
                 let userInfo = {
                     nickName: res.userInfo.nickName,
                     userInfoAvatar: res.userInfo.avatarUrl,
@@ -44,16 +44,17 @@ App({
                 };
                 // 发起网络请求
                 wx.request({
-                        url: self.globalData.ajaxUrl + 'RedPage/page/aways',
+                        url: self.globalData.ajaxUrl + '/RedPage/page/aways',
                         method: 'POST',
                         data: {
                             code: String(self.globalData.code),
                             name: userInfo.nickName,
-                            sex: userInfo.sex == 1 ? '男' : userInfo.sex == 2 ? '女' : '未知',
+                            sex: userInfo.sex == 1 ? '男' : userInfo.sex == 2 ? '女' :
+                                '未知',
                             head: userInfo.userInfoAvatar
                         },
                         success(res) {
-                            console.log(res.data);
+                            // console.log(res.data);
                             wx.setStorage({
                                 key: '3rd_session',
                                 data: res.data['3rd_session']
