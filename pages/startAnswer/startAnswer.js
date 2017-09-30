@@ -11,7 +11,8 @@ Page({
         sex: '',
         province: '',
         city: '',
-        status: '',
+        tid: '', //红包id
+        isCheck: '', //朋友答题完是否可以查看答案
         returnData: {}
     },
 
@@ -20,14 +21,17 @@ Page({
      */
     onLoad: function(options) {
         console.log(options)
-        let tid = options.id
-            // wx.getStorage({
-            //     key: 'key',
-            //     success: function(res) {
-            //         console.log(res.data)
-            //     }
-            // })
+        wx.getStorage({
+            key: 'userInfo',
+            success: function(res) {
+                console.log(res.data)
+            }
+        })
         var self = this
+        self.setData({
+            tid: options.pid,
+            isCheck: options.isCheck
+        })
         wx.getUserInfo({
             success: function(res) {
                 self.setData({
@@ -71,10 +75,10 @@ Page({
             header: {
                 'content-type': 'application/json'
             },
-            data: JSON.stringify({
-                "tid": "1",
-                "uid": "1"
-            }),
+            data: {
+                tid: String(self.data.tid),
+                uid: String(self.data.uid)
+            },
             success(res) {
                 console.log(res)
                 res.data.list.map(function(item) {
@@ -143,4 +147,20 @@ Page({
 
         // console.log(1)
     },
+    startAnswer: function() {
+        var self = this
+        wx.navigateTo({
+            url: '/pages/answerMain/answerMain?id=' + self.data.tid,
+            success: function(res) {
+                // success
+                console.log(res)
+            },
+            fail: function() {
+                // fail
+            },
+            complete: function() {
+                // complete
+            }
+        })
+    }
 })

@@ -10,7 +10,7 @@ Page({
         sex: '',
         province: '',
         city: '',
-        recordInfo: {},
+        recordInfo: {}, //我的记录信息集合
         id: '' //红包id
     },
 

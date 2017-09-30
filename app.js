@@ -44,13 +44,12 @@ App({
                 };
                 // 发起网络请求
                 wx.request({
-                        url: self.globalData.ajaxUrl + '/page/aways',
+                        url: self.globalData.ajaxUrl + 'RedPage/page/aways',
                         method: 'POST',
                         data: {
                             code: String(self.globalData.code),
                             name: userInfo.nickName,
-                            sex: userInfo.sex == 1 ? '男' : userInfo.sex == 2 ? '女' :
-                                '未知',
+                            sex: userInfo.sex == 1 ? '男' : userInfo.sex == 2 ? '女' : '未知',
                             head: userInfo.userInfoAvatar
                         },
                         success(res) {
