@@ -10,7 +10,7 @@ Page({
         sex: '',
         province: '',
         city: '',
-        recordInfo: {},
+        recordInfo: {}, //我的记录信息集合
         id: '' //红包id
     },
 
@@ -127,14 +127,14 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function(res) {
-        var self = this
+        let self = this
         if (res.from === 'button') {
             // 来自页面内转发按钮
             console.log(res.target)
         }
         return {
             title: '我包你答',
-            path: '/pages/startAnswer/startAnswer?id=' + self.data.id,
+            path: '/pages/startAnswer/startAnswer?pid=' + self.data.id,
             imageUrl: '../../images/share.jpg',
             success: function(res) {
                 // 转发成功

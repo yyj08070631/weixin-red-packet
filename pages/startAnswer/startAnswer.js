@@ -11,8 +11,10 @@ Page({
         sex: '',
         province: '',
         city: '',
-        status: '',
-        returnData: {}
+        tid: '', //红包id
+        uid: '', //用户id
+        // isCheck: '', //朋友答题完是否可以查看答案
+        returnData: {} //答题红包具体的信息
     },
 
     /**
@@ -20,72 +22,42 @@ Page({
      */
     onLoad: function(options) {
         console.log(options)
-        let tid = options.id
-            // wx.getStorage({
-            //     key: 'key',
-            //     success: function(res) {
-            //         console.log(res.data)
-            //     }
-            // })
-        var self = this
-        wx.getUserInfo({
+        let self = this
+            //获取红包id
+        self.setData({
+                tid: options.pid
+            })
+            // 获取用户id
+        wx.getStorage({
+            key: 'userId',
             success: function(res) {
+                let uid = res.data
                 self.setData({
-                    nickName: res.userInfo.nickName,
-                    userInfoAvatar: res.userInfo.avatarUrl,
-                    province: res.userInfo.province,
-                    city: res.userInfo.city
+                    uid: res.data
                 })
-                console.log(self.data.nickName + '\n' + self.data.userInfoAvatar + '\n' + self.data.province + '\n' + self.data.city)
-                switch (res.userInfo.gender) {
-                    case 0:
-                        self.setData({
-                            sex: '未知'
+                wx.request({
+                    url: app.globalData.ajaxUrl + '/RedPage/topic/bag',
+                    method: 'POST',
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    data: JSON.stringify({
+                        tid: String(self.data.tid),
+                        uid: String(uid)
+                    }),
+                    success(res) {
+                        console.log(res)
+                        res.data.list.map(function(item) {
+                            item.time = item.time.split(' ')[0].split('-')[1] + '月' + item.time.split(' ')[0].split('-')[2] + '日' + '  ' + item.time.split(' ')[1].split(':')[0] + ' : ' + item.time.split(' ')[1].split(':')[1]
                         })
-                        break;
-                    case 1:
                         self.setData({
-                            sex: '男'
+                            returnData: res.data
                         })
-                        break;
-                    case 2:
-                        self.setData({
-                            sex: '女'
-                        })
-                        break;
-                }
-
-            },
-            fail: function() {
-                // fail
-                console.log("获取失败！")
-            },
-            complete: function() {
-                // complete
-                console.log("获取用户信息完成！")
-            }
-        })
-        wx.request({
-            url: app.globalData.ajaxUrl + '/RedPage/topic/bag',
-            method: 'POST',
-            header: {
-                'content-type': 'application/json'
-            },
-            data: JSON.stringify({
-                "tid": "1",
-                "uid": "1"
-            }),
-            success(res) {
-                console.log(res)
-                res.data.list.map(function(item) {
-                    item.time = item.time.split(' ')[0].split('-')[1] + '月' + item.time.split(' ')[0].split('-')[2] + '日' + '  ' + item.time.split(' ')[1].split(':')[0] + ' : ' + item.time.split(' ')[1].split(':')[1]
+                    },
+                    fail(res) {
+                        console.log(res)
+                    }
                 })
-                self.setData({
-                    returnData: res.data
-                })
-            },
-            fail(res) {
-                console.log(res)
             }
         })
     },
@@ -135,12 +107,48 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
-
+    onShareAppMessage: function(res) {
+        let self = this
+        if (res.from === 'button') {
+            // 来自页面内转发按钮
+            console.log(res.target)
+        }
+        return {
+            title: '我包你答',
+            path: '/pages/startAnswer/startAnswer?pid=' + self.data.tid,
+            imageUrl: '../../images/share.jpg',
+            success: function(res) {
+                // 转发成功
+            },
+            fail: function(res) {
+                // 转发失败
+            }
+        }
     },
     gobackHistory: function() {
         wx.navigateBack();
 
         // console.log(1)
     },
+    startAnswer: function() {
+        var self = this
+        wx.navigateTo({
+            // url: '/pages/answerMain/answerMain?id=' + self.data.tid + '&user=' + self.data.uid,
+            url: '/pages/answerMain/answerMain',
+            data: {
+                packet_id: self.data.tid,
+                user_id: self.data.uid
+            },
+            success: function(res) {
+                // success
+                console.log(res)
+            },
+            fail: function() {
+                // fail
+            },
+            complete: function() {
+                // complete
+            }
+        })
+    }
 })

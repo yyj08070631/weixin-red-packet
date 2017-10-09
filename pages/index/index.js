@@ -2,7 +2,7 @@
 //index.js
 //获取应用实例
 wx.showShareMenu({
-	withShareTicket: true
+    withShareTicket: true
 })
 
 var app = getApp()
@@ -107,99 +107,99 @@ Page({
 				showCancel: false,
 				success: function (res) {
 
-				},
+                },
 
-			})
-		}
-	},
-	//输入金额数值
-	replaceMoneyVal: function (e) {
-		this.setData({
-			moneyNum: e.detail.value
-				.replace(/[^\d.]/g, "")
-				.replace(/\.{2,}/g, ".")
-				.replace(".", "$#$")
-				.replace(/\./g, "")
-				.replace("$#$", ".").replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'),
-			service: e.detail.value * this.data.serviceRate / 100,
-			resultNumber: parseFloat(e.detail.value) + e.detail.value * this.data.serviceRate / 100
-		});
-		this.maxNum(e.detail.value);
-	},
-	//输入红包数量
-	replacePacketVal: function (e) {
-		this.setData({
-			packetNum: e.detail.value.replace(/[^0-9]/g, ''),
-			service: this.data.moneyNum * this.data.serviceRate / 100,
-			resultNumber: parseFloat(this.data.moneyNum) + this.data.moneyNum * this.data.serviceRate / 100,
-		})
-		this.maxNum(e.detail.value)
-	},
-	//获取最终结果
-	saveResult: function () {
-		this.setData({
-			service: this.data.moneyNum * this.data.serviceRate / 100,
-			resultNumber: parseFloat(this.data.moneyNum) + this.data.moneyNum * this.data.serviceRate / 100,
-		})
-	},
-	//金额输入框失去焦点
-	getResult: function () {
-		var self = this;
-		if (this.data.moneyNum < 2) {
-			wx.showModal({
-				title: '提示',
-				content: '红包不能少于2元哦~ $_$',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						self.saveResult()
-					}
-				}
-			})
-			this.setData({
-				moneyNum: 2,
-				service: (this.data.moneyNum * this.data.serviceRate / 100).toFixed(2)
-			})
-		}
-		//  console.log(this.data.moneyNum)
-		//  console.log(this.data.packetNum)
-	},
-	//金额输入框失去焦点
-	getPacket: function () {
-		var self = this;
-		if (this.data.packetNum < 1) {
-			wx.showModal({
-				title: '提示',
-				content: '不能少于1个红包哦~ $_$)',
-				showCancel: false,
-				success: function (res) {
-					if (res.confirm) {
-						self.saveResult()
-					}
-				}
-			})
-			this.setData({
-				packetNum: 1,
-				service: (this.data.moneyNum * this.data.serviceRate / 100).toFixed(2)
-			})
-		}
-	},
-	//清空金额数值
-	clearMoneyVal: function (e) {
-		if (this.data.moneyNum == 0.00) {
-			this.setData({
-				moneyNum: ''
-			})
-		}
+            })
+        }
+    },
+    //输入金额数值
+    replaceMoneyVal: function(e) {
+        this.setData({
+            moneyNum: e.detail.value
+                .replace(/[^\d.]/g, "")
+                .replace(/\.{2,}/g, ".")
+                .replace(".", "$#$")
+                .replace(/\./g, "")
+                .replace("$#$", ".").replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'),
+            service: e.detail.value * this.data.serviceRate / 100,
+            resultNumber: parseFloat(e.detail.value) + e.detail.value * this.data.serviceRate / 100
+        });
+        this.maxNum(e.detail.value);
+    },
+    //输入红包数量
+    replacePacketVal: function(e) {
+        this.setData({
+            packetNum: e.detail.value.replace(/[^0-9]/g, ''),
+            service: this.data.moneyNum * this.data.serviceRate / 100,
+            resultNumber: parseFloat(this.data.moneyNum) + this.data.moneyNum * this.data.serviceRate / 100,
+        })
+        this.maxNum(e.detail.value)
+    },
+    //获取最终结果
+    saveResult: function() {
+        this.setData({
+            service: this.data.moneyNum * this.data.serviceRate / 100,
+            resultNumber: parseFloat(this.data.moneyNum) + this.data.moneyNum * this.data.serviceRate / 100,
+        })
+    },
+    //金额输入框失去焦点
+    getResult: function() {
+        var self = this;
+        if (this.data.moneyNum < 2) {
+            wx.showModal({
+                title: '提示',
+                content: '红包不能少于2元哦~ $_$',
+                showCancel: false,
+                success: function(res) {
+                    if (res.confirm) {
+                        self.saveResult()
+                    }
+                }
+            })
+            this.setData({
+                moneyNum: 2,
+                service: (this.data.moneyNum * this.data.serviceRate / 100).toFixed(2)
+            })
+        }
+        //  console.log(this.data.moneyNum)
+        //  console.log(this.data.packetNum)
+    },
+    //金额输入框失去焦点
+    getPacket: function() {
+        var self = this;
+        if (this.data.packetNum < 1) {
+            wx.showModal({
+                title: '提示',
+                content: '不能少于1个红包哦~ $_$)',
+                showCancel: false,
+                success: function(res) {
+                    if (res.confirm) {
+                        self.saveResult()
+                    }
+                }
+            })
+            this.setData({
+                packetNum: 1,
+                service: (this.data.moneyNum * this.data.serviceRate / 100).toFixed(2)
+            })
+        }
+    },
+    //清空金额数值
+    clearMoneyVal: function(e) {
+        if (this.data.moneyNum == 0.00) {
+            this.setData({
+                moneyNum: ''
+            })
+        }
 
-	},
-	//清空红包数值
-	clearPacketVal: function (e) {
-		if (this.data.packetNum == 0) {
-			this.setData({
-				packetNum: ''
-			})
-		}
+    },
+    //清空红包数值
+    clearPacketVal: function(e) {
+        if (this.data.packetNum == 0) {
+            this.setData({
+                packetNum: ''
+            })
+        }
 
 	},
 	//清空金额数值
@@ -270,43 +270,10 @@ Page({
 					}
 				}
 
-			},
-		})
-		//   wx.requestPayment({
-		//     'timeStamp': '',
-		//     'nonceStr': '',
-		//     'package': '',
-		//     'signType': 'MD5',
-		//     'paySign': '',
-		//     'success':function(res){
-		//     },
-		//     'fail':function(res){
-		//     }
-		//  })
-	},
-	jumpToSelectQuestion: function () {
-		this.setPacketInfo()
-		wx.redirectTo({
-			url: "/pages/selectQuestion/selectQuestion",
-		})
-	},
-	// 创建红包
-	// 存储金额
-	setPacketInfo: function () {
-		wx.setStorage({
-			key: 'packet',
-			data: {
-				money: this.data.moneyNum,
-				packet: this.data.packetNum,
-				resultNumber: this.data.resultNumber,
-				service: this.data.service
-			},
-			success: function (res) {
-
-			}
-		})
-	},
-	createPacket: function () {
-		this.payPacket()
-	},
+            }
+        })
+    },
+    createPacket: function() {
+        this.payPacket()
+    },
 })

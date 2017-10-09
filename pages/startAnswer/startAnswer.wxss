@@ -72,7 +72,7 @@ page {
     display: flex;
     margin-bottom: 20rpx;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
     height: 104rpx;
     background: #fff;
@@ -80,7 +80,7 @@ page {
 
 .handle-tab .item-left {
     flex: 1;
-    margin-left: 170rpx;
+    margin-left: 150rpx;
     height: 100%;
 }
 
