@@ -1,25 +1,32 @@
 var app = getApp()
 Page({
   data: {
-	userInfoList: [],	//用来保存本地保存的用户信息
-    handleKey: false,	//控制显示选题面板还是改题面板
-    storageProblem: [], // 获取本地问题信息，就是选题之后的结果
-    answer: '',			//用来存储答案的值
-    showBtn: 0,			//显示确定或下一题按钮
-    quesKey: 0,			//更换问题的值
-    service: 0,			//服务费
-    resultNumber: 0,	//最终金额结果
-    questionData: [],	//用来保存从后天获取的数据
-					//item的背景数组，默认全部未选中
-    urlList: [], //用来清除选中的值
-    answerList: [],		//存储5个题目和答案的数组
-    updateAnswerList: [], //修改题目存储的url
-  index: ''
+		uid: '',
+		tid: '',
+	  userInfoList: [],	// 用来保存本地保存的用户信息
+    handleKey: false,	// 控制显示选题面板还是改题面板
+    storageProblem: [], //  获取本地问题信息，就是选题之后的结果
+    answer: '',			// 用来存储答案的值
+    showBtn: 0,			// 显示确定或下一题按钮
+    quesKey: 0,			// 更换问题的值
+    service: 0,			// 服务费
+    resultNumber: 0,	// 最终金额结果
+    questionData: [],	// 用来保存从后天获取的数据
+					// item的背景数组，默认全部未选中
+    urlList: [], // 用来清除选中的值
+    answerList: [],		// 存储5个题目和答案的数组
+    updateAnswerList: [], // 修改题目存储的url
+    index: ''
   },
     //页面加载完钩子函数
   onLoad (options) { 
-	let self = this
-  	let {storageProblem, quesKey, userInfoList, urlList} = self.data
+		console.log(options)
+	  let self = this
+		let {storageProblem, quesKey, userInfoList, urlList, uid, tid } = self.data
+		self.setData({
+			tid: options.packet_id,
+			uid: options.user_id
+		})
 	//获取用户信息
 	wx.getStorage({
 		key: 'userInfo',
@@ -29,7 +36,7 @@ Page({
 		}
 	
 	  })
-	  
+
 	//请求问题接口  
     wx.request({
       url: app.globalData.ajaxUrl+':/RedPage/topic/answer', 
@@ -200,7 +207,7 @@ Page({
   },
 //   保存最终结果并回到首页
   saveQuestion(){
-	let {storageProblem} = this.data
+	let {storageProblemm, tid, uid} = this.data
 	let {result,response_answer,sid} = {result:[],response_answer:[],sid:[]}
 
 	 
@@ -222,9 +229,8 @@ Page({
 			data: {	
 				response_answer: response_answer.toString(),
 				sid: sid.toString(),
-				id: (12).toString(),
-				tid: (1).toString()
-
+				id: uid.toString(),
+				tid: tid.toString()
 			},
 			success(res) {
 				console.log(res)

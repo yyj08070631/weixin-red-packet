@@ -133,12 +133,12 @@ Page({
     startAnswer: function() {
         var self = this
         wx.navigateTo({
-            // url: '/pages/answerMain/answerMain?id=' + self.data.tid + '&user=' + self.data.uid,
-            url: '/pages/answerMain/answerMain',
-            data: {
-                packet_id: self.data.tid,
-                user_id: self.data.uid
-            },
+            url: '/pages/answerMain/answerMain?packet_id=' + self.data.tid + '&user_id=' + self.data.uid,
+            // url: '/pages/answerMain/answerMain',
+            // query: {
+            //     packet_id: self.data.tid,
+            //     user_id: self.data.uid
+            // },
             success: function(res) {
                 // success
                 console.log(res)
