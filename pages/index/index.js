@@ -30,7 +30,8 @@ Page({
 		answerList: [], // 存储5个题目和答案的数组
 		// condition: 0, // 答对多少题才有红包
 		expendId: 0, // 个人发出红包id
-		incomeId: 0 // 个人收入红包id
+		incomeId: 0, // 个人收入红包id
+		currentTab: '' // 当前选中的价格标签
 	},
 	//事件处理函数
 	bindViewTap: function () {
@@ -205,11 +206,15 @@ Page({
 	changeMoneyNum: function (e) {
 		//获取事件绑定设置的参数
 		var number = e.currentTarget.dataset.number;
-		// console.log(number)
+		// console.log(e)
 		this.setData({
 			moneyNum: number
 		})
-		this.saveResult()
+		this.saveResult();
+		// 金额点击切换样式
+		this.setData({
+			currentTab: number
+		})
 	},
 	payPacket: function () {
 		var nbsp = "&nbsp&nbsp&nbsp&nbsp";

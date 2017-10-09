@@ -89,6 +89,9 @@ page{
     background-color: #fef9d2;
     color: #f92241;
 }
+.index-container .money-box .money-item-active {
+    background: #ebc521;
+}
 
 .index-container .money-box .money-item:first-child {
     margin-left: 0;

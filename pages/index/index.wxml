@@ -6,10 +6,10 @@
 			<text>元</text>
 		</view>
 		<view class="money-box">
-			<view class="money-item" bindtap="changeMoneyNum" data-number="2">2元</view>
-			<view class="money-item" bindtap="changeMoneyNum" data-number="5">5元</view>
-			<view class="money-item" bindtap="changeMoneyNum" data-number="10">10元</view>
-			<view class="money-item" bindtap="changeMoneyNum" data-number="15">15元</view>
+			<view class="{{currentTab == '2' ? 'money-item money-item-active' : 'money-item'}}" bindtap="changeMoneyNum" data-number="2">2元</view>
+			<view class="{{currentTab == '5' ? 'money-item money-item-active' : 'money-item'}}" bindtap="changeMoneyNum" data-number="5">5元</view>
+			<view class="{{currentTab == '10' ? 'money-item money-item-active' : 'money-item'}}" bindtap="changeMoneyNum" data-number="10">10元</view>
+			<view class="{{currentTab == '15' ? 'money-item money-item-active' : 'money-item'}}" bindtap="changeMoneyNum" data-number="15">15元</view>
 		</view>
 		<view class="packet-num">
 			<text>红包数量</text>
